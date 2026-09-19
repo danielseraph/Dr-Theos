@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+@theme {
+  --color-navy: #0B1F33;
+  --color-emerald: #0F8B6D;
+  --color-gold: #D6A84F;
+  --color-offwhite: #F7F5EF;
+  --color-dark: #17212B;
+  
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-heading: 'Inter', system-ui, sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-offwhite text-dark font-sans antialiased;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading tracking-tight;
+  }
+}
+
+@utility text-balance {
+  text-wrap: balance;
+}
