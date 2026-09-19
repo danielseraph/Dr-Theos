@@ -1,4 +1,3 @@
-import React from 'react';
 import { ContactForm } from '../components/forms/ContactForm';
 import { Mail, Phone, MapPin } from 'lucide-react';
 

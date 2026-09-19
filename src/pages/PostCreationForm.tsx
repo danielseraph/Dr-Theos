@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Button } from '../components/common/Button';
 import { UploadCloud, Image as ImageIcon, Video, X } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
@@ -11,6 +11,7 @@ export const PostCreationForm = () => {
   const handleSubmit = (e: React.FormEvent, publish: boolean) => {
     e.preventDefault();
     setStatus('saving');
+    console.log(publish ? 'Publishing' : 'Saving draft');
     // Simulate save/publish API call
     setTimeout(() => {
       setStatus('idle');

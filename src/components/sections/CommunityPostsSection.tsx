@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { Play } from 'lucide-react';
 
@@ -89,7 +88,7 @@ export const CommunityPostsSection = () => {
                 
                 <Link to={`/posts/${post.id}`} className="font-semibold text-navy inline-flex items-center group-hover:text-emerald transition-colors mt-auto">
                   {post.mediaType === 'video' ? 'Watch Video' : 'Read More'} 
-                  <span className="ml-2 transform group-hover:translate-x-1 transition-transform">→</span>
+                  <span className="ml-2 transform group-hover:translate-x-1 transition-transform">â†’</span>
                 </Link>
               </div>
             </article>

@@ -1,4 +1,3 @@
-import React from 'react';
 import { Users, UserPlus, FileText, TrendingUp } from 'lucide-react';
 
 const StatCard = ({ title, value, icon: Icon, trend }: any) => (

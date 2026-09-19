@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Outlet, Link, useLocation } from 'react-router-dom';
 import { LayoutDashboard, Users, FileText, Image as ImageIcon, Settings, LogOut, Menu, X } from 'lucide-react';
 import { cn } from '../../utils/cn';

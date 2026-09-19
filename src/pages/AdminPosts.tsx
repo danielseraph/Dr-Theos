@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import { Button } from '../components/common/Button';
 import { Plus, Image as ImageIcon, Video, MoreVertical, Edit, Trash2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -36,7 +35,7 @@ export const AdminPosts = () => {
                   <span className={post.status === 'Published' ? 'text-emerald' : 'text-gold'}>
                     {post.status}
                   </span>
-                  <span>•</span>
+                  <span>â€¢</span>
                   <span>{post.date}</span>
                 </div>
               </div>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Button } from '../common/Button';
 
 export const RegistrationForm = () => {
@@ -68,7 +68,7 @@ export const RegistrationForm = () => {
     return (
       <div className="bg-emerald/10 border border-emerald/20 rounded-2xl p-8 text-center">
         <div className="w-16 h-16 bg-emerald rounded-full flex items-center justify-center mx-auto mb-6 text-white text-2xl">
-          ✓
+          âœ“
         </div>
         <h3 className="text-2xl font-bold text-navy mb-4">Registration successful.</h3>
         <p className="text-dark/70 mb-8">Welcome to the community. We've sent a confirmation email with next steps.</p>
