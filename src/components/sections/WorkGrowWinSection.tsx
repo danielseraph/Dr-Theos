@@ -5,13 +5,13 @@ const steps = [
     title: 'WORK TOGETHER',
     description: 'We bring people, ideas, skills, and resources together to create meaningful opportunities.',
     colorClass: 'bg-navy text-white',
-    accentColor: 'text-emerald',
+    accentColor: 'text-gold',
   },
   {
     id: '02',
     title: 'GROW TOGETHER',
     description: 'We learn from one another, develop our strengths, and create an environment where everyone can progress.',
-    colorClass: 'bg-emerald text-white',
+    colorClass: 'bg-gold text-white',
     accentColor: 'text-navy',
   },
   {

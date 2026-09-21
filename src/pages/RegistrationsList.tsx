@@ -20,7 +20,7 @@ export const RegistrationsList = () => {
             <input 
               type="text" 
               placeholder="Search by name or email..." 
-              className="w-full pl-10 pr-4 py-2 text-sm border border-gray-200 rounded-lg focus:ring-2 focus:ring-emerald focus:border-transparent outline-none bg-white"
+              className="w-full pl-10 pr-4 py-2 text-sm border border-gray-200 rounded-lg focus:ring-2 focus:ring-gold focus:border-transparent outline-none bg-white"
             />
           </div>
           <div className="flex gap-2">
@@ -53,12 +53,12 @@ export const RegistrationsList = () => {
                   <td className="px-6 py-4 text-dark/70">New York, US</td>
                   <td className="px-6 py-4 text-dark/70">Sep {20 - i}, 2026</td>
                   <td className="px-6 py-4">
-                    <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-emerald/10 text-emerald">
+                    <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-gold/10 text-gold">
                       Active
                     </span>
                   </td>
                   <td className="px-6 py-4 text-right">
-                    <button className="text-gray-400 hover:text-emerald transition-colors p-1" title="View Details">
+                    <button className="text-gray-400 hover:text-gold transition-colors p-1" title="View Details">
                       <Eye className="w-5 h-5" />
                     </button>
                   </td>
@@ -73,7 +73,7 @@ export const RegistrationsList = () => {
           <span>Showing 1 to 7 of 1,248 entries</span>
           <div className="flex gap-1">
             <button className="px-3 py-1 border border-gray-200 rounded-md hover:bg-gray-50 disabled:opacity-50">Prev</button>
-            <button className="px-3 py-1 bg-emerald text-white rounded-md">1</button>
+            <button className="px-3 py-1 bg-gold text-white rounded-md">1</button>
             <button className="px-3 py-1 border border-gray-200 rounded-md hover:bg-gray-50">2</button>
             <button className="px-3 py-1 border border-gray-200 rounded-md hover:bg-gray-50">3</button>
             <button className="px-3 py-1 border border-gray-200 rounded-md hover:bg-gray-50">Next</button>

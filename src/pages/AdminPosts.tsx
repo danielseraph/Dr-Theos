@@ -23,7 +23,7 @@ export const AdminPosts = () => {
           { id: 2, title: 'The Power of Collective Growth', type: 'video', status: 'Published', date: 'Sep 10, 2026' },
           { id: 3, title: 'Draft: Upcoming Q4 Initiatives', type: 'image', status: 'Draft', date: 'Sep 18, 2026' }
         ].map((post) => (
-          <div key={post.id} className="bg-white p-4 sm:p-6 rounded-2xl shadow-sm border border-gray-100 flex flex-col sm:flex-row justify-between sm:items-center gap-4 group hover:border-emerald/30 transition-colors">
+          <div key={post.id} className="bg-white p-4 sm:p-6 rounded-2xl shadow-sm border border-gray-100 flex flex-col sm:flex-row justify-between sm:items-center gap-4 group hover:border-gold/30 transition-colors">
             
             <div className="flex items-center gap-4">
               <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center shrink-0">
@@ -32,7 +32,7 @@ export const AdminPosts = () => {
               <div>
                 <h3 className="font-bold text-navy mb-1">{post.title}</h3>
                 <div className="flex items-center gap-3 text-xs text-dark/60 font-medium">
-                  <span className={post.status === 'Published' ? 'text-emerald' : 'text-gold'}>
+                  <span className={post.status === 'Published' ? 'text-gold' : 'text-gold'}>
                     {post.status}
                   </span>
                   <span>â€¢</span>
@@ -42,7 +42,7 @@ export const AdminPosts = () => {
             </div>
 
             <div className="flex items-center gap-2 self-end sm:self-auto opacity-100 sm:opacity-0 group-hover:opacity-100 transition-opacity">
-              <button className="p-2 text-gray-500 hover:text-emerald transition-colors rounded-md hover:bg-emerald/10" title="Edit">
+              <button className="p-2 text-gray-500 hover:text-gold transition-colors rounded-md hover:bg-gold/10" title="Edit">
                 <Edit className="w-4 h-4" />
               </button>
               <button className="p-2 text-gray-500 hover:text-red-500 transition-colors rounded-md hover:bg-red-50" title="Delete">

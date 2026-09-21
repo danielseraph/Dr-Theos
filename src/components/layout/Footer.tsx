@@ -22,7 +22,7 @@ export const Footer = () => {
             <ul className="space-y-3">
               {['Home', 'About', 'What We Do', 'Community', 'Posts'].map(item => (
                 <li key={item}>
-                  <Link to={`/${item.toLowerCase().replace(/\s+/g, '') === 'home' ? '' : item.toLowerCase().replace(/\s+/g, '')}`} className="text-white/70 hover:text-emerald transition-colors text-sm">
+                  <Link to={`/${item.toLowerCase().replace(/\s+/g, '') === 'home' ? '' : item.toLowerCase().replace(/\s+/g, '')}`} className="text-white/70 hover:text-gold transition-colors text-sm">
                     {item}
                   </Link>
                 </li>

@@ -19,29 +19,29 @@ export const Contact = () => {
           <div className="lg:col-span-5 flex flex-col justify-center space-y-10">
             <div className="flex items-start">
               <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shrink-0 shadow-sm border border-gray-100 mr-6">
-                <Mail className="w-6 h-6 text-emerald" />
+                <Mail className="w-6 h-6 text-gold" />
               </div>
               <div>
                 <h4 className="text-xl font-bold text-navy mb-2">Email</h4>
                 <p className="text-dark/70 mb-1">For general inquiries and support.</p>
-                <a href="mailto:contact@drtheos.org" className="text-emerald font-semibold hover:underline">contact@drtheos.org</a>
+                <a href="mailto:contact@drtheos.org" className="text-gold font-semibold hover:underline">contact@drtheos.org</a>
               </div>
             </div>
 
             <div className="flex items-start">
               <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shrink-0 shadow-sm border border-gray-100 mr-6">
-                <Phone className="w-6 h-6 text-emerald" />
+                <Phone className="w-6 h-6 text-gold" />
               </div>
               <div>
                 <h4 className="text-xl font-bold text-navy mb-2">Phone</h4>
                 <p className="text-dark/70 mb-1">Mon-Fri from 9am to 6pm.</p>
-                <a href="tel:+15551234567" className="text-emerald font-semibold hover:underline">+1 (555) 123-4567</a>
+                <a href="tel:+15551234567" className="text-gold font-semibold hover:underline">+1 (555) 123-4567</a>
               </div>
             </div>
 
             <div className="flex items-start">
               <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shrink-0 shadow-sm border border-gray-100 mr-6">
-                <MapPin className="w-6 h-6 text-emerald" />
+                <MapPin className="w-6 h-6 text-gold" />
               </div>
               <div>
                 <h4 className="text-xl font-bold text-navy mb-2">Address</h4>

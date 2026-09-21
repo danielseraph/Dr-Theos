@@ -6,7 +6,7 @@ const initiatives = [
     id: 1,
     title: 'Community Building',
     description: 'We organize networking events, collaborative workshops, and social gatherings to strengthen our collective bonds.',
-    icon: <Users className="w-8 h-8 text-emerald" />,
+    icon: <Users className="w-8 h-8 text-gold" />,
   },
   {
     id: 2,
@@ -28,14 +28,14 @@ export const WhatWeDoSection = () => {
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
           <div className="max-w-2xl">
-            <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">Empowering Our Community</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">Current Initiatives</h2>
             <p className="text-lg text-dark/70 leading-relaxed">
               We provide the framework, resources, and connections needed to turn our shared vision into measurable progress.
             </p>
           </div>
           <Link 
             to="/programs" 
-            className="inline-flex items-center text-emerald font-semibold hover:text-navy transition-colors group whitespace-nowrap"
+            className="inline-flex items-center text-gold font-semibold hover:text-navy transition-colors group whitespace-nowrap"
           >
             VIEW ALL PROGRAMS 
             <ArrowRight className="ml-2 w-5 h-5 transform group-hover:translate-x-1 transition-transform" />
@@ -56,7 +56,7 @@ export const WhatWeDoSection = () => {
                 {initiatives[0].description}
               </p>
             </div>
-            <Link to={`/programs/${initiatives[0].id}`} className="text-emerald font-medium inline-flex items-center">
+            <Link to={`/programs/${initiatives[0].id}`} className="text-gold font-medium inline-flex items-center">
               Learn more <ArrowRight className="ml-2 w-4 h-4" />
             </Link>
           </div>
@@ -64,7 +64,7 @@ export const WhatWeDoSection = () => {
           {/* Side Stacked Items */}
           <div className="md:col-span-12 lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-8">
             {initiatives.slice(1).map((item) => (
-              <div key={item.id} className="bg-white p-8 rounded-2xl border border-gray-100 flex flex-col justify-center group hover:border-emerald/30 hover:shadow-md transition-all">
+              <div key={item.id} className="bg-white p-8 rounded-2xl border border-gray-100 flex flex-col justify-center group hover:border-gold/30 hover:shadow-md transition-all">
                 <div className="flex items-start gap-6">
                   <div className="w-14 h-14 bg-offwhite rounded-xl flex items-center justify-center shrink-0">
                     {item.icon}
@@ -74,7 +74,7 @@ export const WhatWeDoSection = () => {
                     <p className="text-dark/70 leading-relaxed mb-4">
                       {item.description}
                     </p>
-                    <Link to={`/programs/${item.id}`} className="text-emerald font-medium inline-flex items-center text-sm">
+                    <Link to={`/programs/${item.id}`} className="text-gold font-medium inline-flex items-center text-sm">
                       Learn more <ArrowRight className="ml-2 w-4 h-4" />
                     </Link>
                   </div>

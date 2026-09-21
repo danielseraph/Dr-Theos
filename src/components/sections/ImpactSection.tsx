@@ -41,7 +41,7 @@ const StatItem: React.FC<StatItemProps> = ({ endValue, suffix, label }) => {
       <div className="text-4xl md:text-5xl font-black text-navy mb-2 tracking-tight">
         {count}{suffix}
       </div>
-      <div className="text-emerald font-semibold uppercase tracking-wider text-sm">
+      <div className="text-gold font-semibold uppercase tracking-wider text-sm">
         {label}
       </div>
     </div>
@@ -68,7 +68,7 @@ export const ImpactSection = () => {
             className="text-3xl md:text-5xl font-bold text-navy mb-6 leading-tight"
           >
             When We Move Together, <br />
-            <span className="text-emerald">We Move Further.</span>
+            <span className="text-gold">We Move Further.</span>
           </motion.h2>
           <p className="text-lg text-dark/70">
             Our collective efforts translate into real-world impact. Every connection made is a step towards our shared success.

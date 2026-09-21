@@ -13,7 +13,7 @@ export const AboutSection = () => {
             </div>
             
             <h2 className="text-4xl md:text-5xl font-bold text-navy mb-6 leading-tight">
-              One People. One Purpose. <span className="text-emerald">One Future.</span>
+              One People. One Purpose. <span className="text-gold">One Future.</span>
             </h2>
             
             <p className="text-lg text-dark/80 mb-8 leading-relaxed">
@@ -28,7 +28,7 @@ export const AboutSection = () => {
           {/* Right Column - Image */}
           <div className="relative">
             {/* Decorative Elements */}
-            <div className="absolute -top-6 -left-6 w-32 h-32 bg-emerald/10 rounded-full blur-2xl"></div>
+            <div className="absolute -top-6 -left-6 w-32 h-32 bg-gold/10 rounded-full blur-2xl"></div>
             <div className="absolute -bottom-6 -right-6 w-48 h-48 bg-navy/10 rounded-full blur-2xl"></div>
             <div className="absolute top-1/2 -right-4 w-2 h-24 bg-gold rounded-full transform -translate-y-1/2"></div>
             

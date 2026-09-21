@@ -48,7 +48,7 @@ export const CommunityPostsSection = () => {
             <h2 className="text-3xl md:text-4xl font-bold text-navy mb-2">From Our Community</h2>
             <p className="text-dark/70 text-lg">Stories, updates, and highlights from our shared journey.</p>
           </div>
-          <Link to="/posts" className="hidden md:inline-block text-emerald font-semibold hover:text-navy transition-colors">
+          <Link to="/posts" className="hidden md:inline-block text-gold font-semibold hover:text-navy transition-colors">
             READ ALL POSTS
           </Link>
         </div>
@@ -76,17 +76,17 @@ export const CommunityPostsSection = () => {
 
               {/* Content */}
               <div className="flex flex-col flex-grow">
-                <div className="text-sm text-emerald font-semibold uppercase tracking-wider mb-3">
+                <div className="text-sm text-gold font-semibold uppercase tracking-wider mb-3">
                   {post.date}
                 </div>
-                <h3 className="text-2xl font-bold text-navy mb-3 group-hover:text-emerald transition-colors line-clamp-2">
+                <h3 className="text-2xl font-bold text-navy mb-3 group-hover:text-gold transition-colors line-clamp-2">
                   {post.title}
                 </h3>
                 <p className="text-dark/70 line-clamp-3 mb-6 flex-grow">
                   {post.excerpt}
                 </p>
                 
-                <Link to={`/posts/${post.id}`} className="font-semibold text-navy inline-flex items-center group-hover:text-emerald transition-colors mt-auto">
+                <Link to={`/posts/${post.id}`} className="font-semibold text-navy inline-flex items-center group-hover:text-gold transition-colors mt-auto">
                   {post.mediaType === 'video' ? 'Watch Video' : 'Read More'} 
                   <span className="ml-2 transform group-hover:translate-x-1 transition-transform">â†’</span>
                 </Link>
@@ -96,7 +96,7 @@ export const CommunityPostsSection = () => {
         </div>
         
         <div className="mt-12 text-center md:hidden">
-          <Link to="/posts" className="inline-block text-emerald font-semibold">
+          <Link to="/posts" className="inline-block text-gold font-semibold">
             READ ALL POSTS
           </Link>
         </div>

@@ -17,7 +17,7 @@ export const Register = () => {
         <RegistrationForm />
         
         <p className="text-center text-sm text-dark/60 mt-8">
-          By registering, you agree to our <a href="/terms" className="text-emerald hover:underline">Terms of Service</a> and <a href="/privacy" className="text-emerald hover:underline">Privacy Policy</a>.
+          By registering, you agree to our <a href="/terms" className="text-gold hover:underline">Terms of Service</a> and <a href="/privacy" className="text-gold hover:underline">Privacy Policy</a>.
         </p>
       </div>
     </div>

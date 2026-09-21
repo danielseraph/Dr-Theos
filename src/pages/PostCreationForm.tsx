@@ -19,7 +19,7 @@ export const PostCreationForm = () => {
     }, 1000);
   };
 
-  const inputClasses = "w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-emerald focus:border-transparent outline-none transition-all bg-gray-50 focus:bg-white text-dark";
+  const inputClasses = "w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-gold focus:border-transparent outline-none transition-all bg-gray-50 focus:bg-white text-dark";
 
   return (
     <div className="max-w-4xl mx-auto space-y-6">
@@ -71,7 +71,7 @@ export const PostCreationForm = () => {
                   onClick={() => setFormData({...formData, mediaType: type.id})}
                   className={`flex-1 py-3 px-4 rounded-xl border flex items-center justify-center gap-2 font-medium transition-all ${
                     formData.mediaType === type.id 
-                      ? 'border-emerald bg-emerald/5 text-emerald shadow-sm' 
+                      ? 'border-gold bg-gold/5 text-gold shadow-sm' 
                       : 'border-gray-200 text-gray-500 hover:bg-gray-50'
                   }`}
                 >
@@ -85,7 +85,7 @@ export const PostCreationForm = () => {
           {formData.mediaType !== 'none' && (
             <div className="border-2 border-dashed border-gray-300 rounded-xl p-10 flex flex-col items-center justify-center text-center bg-gray-50/50 hover:bg-gray-50 transition-colors cursor-pointer group">
               <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-sm mb-4 group-hover:scale-110 transition-transform">
-                <UploadCloud className="w-8 h-8 text-emerald" />
+                <UploadCloud className="w-8 h-8 text-gold" />
               </div>
               <h4 className="text-navy font-semibold mb-1">Click to upload {formData.mediaType}</h4>
               <p className="text-sm text-gray-500">or drag and drop here</p>

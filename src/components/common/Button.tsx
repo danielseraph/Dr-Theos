@@ -2,7 +2,7 @@ import React from 'react';
 import { cn } from '../../utils/cn';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'secondary' | 'outline' | 'ghost';
+  variant?: 'primary' | 'secondary' | 'accent' | 'outline' | 'whiteOutline' | 'white' | 'ghost';
   size?: 'sm' | 'md' | 'lg';
   children: React.ReactNode;
 }
@@ -10,13 +10,16 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant = 'primary', size = 'md', children, ...props }, ref) => {
     
-    const baseStyles = "inline-flex items-center justify-center font-medium rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none";
+    const baseStyles = "inline-flex items-center justify-center font-medium rounded-xl transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none";
     
     const variants = {
-      primary: "bg-emerald text-white hover:bg-emerald/90 focus:ring-emerald",
-      secondary: "bg-navy text-white hover:bg-navy/90 focus:ring-navy",
-      outline: "border-2 border-white text-white hover:bg-white hover:text-navy focus:ring-white",
-      ghost: "text-dark hover:bg-black/5 focus:ring-dark",
+      primary: "bg-gold text-white border-2 border-gold hover:bg-gold/90 focus:ring-gold",
+      secondary: "bg-navy text-white border-2 border-navy hover:bg-navy/90 focus:ring-navy",
+      accent: "bg-gold text-navy border-2 border-gold hover:bg-gold/90 focus:ring-gold font-bold",
+      outline: "border-2 border-gold text-gold hover:bg-gold/5 focus:ring-gold",
+      whiteOutline: "border-2 border-white text-white hover:bg-white hover:text-navy focus:ring-white",
+      white: "bg-white text-gold border-2 border-white hover:bg-white/90 focus:ring-white",
+      ghost: "text-navy hover:bg-navy/5 focus:ring-navy",
     };
     
     const sizes = {

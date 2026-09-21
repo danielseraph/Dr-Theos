@@ -66,8 +66,8 @@ export const RegistrationForm = () => {
 
   if (status === 'success') {
     return (
-      <div className="bg-emerald/10 border border-emerald/20 rounded-2xl p-8 text-center">
-        <div className="w-16 h-16 bg-emerald rounded-full flex items-center justify-center mx-auto mb-6 text-white text-2xl">
+      <div className="bg-gold/10 border border-gold/20 rounded-2xl p-8 text-center">
+        <div className="w-16 h-16 bg-gold rounded-full flex items-center justify-center mx-auto mb-6 text-white text-2xl">
           âœ“
         </div>
         <h3 className="text-2xl font-bold text-navy mb-4">Registration successful.</h3>
@@ -79,7 +79,7 @@ export const RegistrationForm = () => {
     );
   }
 
-  const inputClasses = "w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-emerald focus:border-transparent outline-none transition-all bg-gray-50 focus:bg-white";
+  const inputClasses = "w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-gold focus:border-transparent outline-none transition-all bg-gray-50 focus:bg-white";
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6 bg-white p-8 md:p-10 rounded-2xl shadow-xl border border-gray-100">

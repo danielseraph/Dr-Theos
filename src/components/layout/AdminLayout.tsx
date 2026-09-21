@@ -50,7 +50,7 @@ export const AdminLayout = () => {
                 to={item.href}
                 className={cn(
                   "flex items-center px-4 py-3 rounded-lg transition-colors group",
-                  isActive ? "bg-emerald text-white" : "text-white/70 hover:bg-white/10 hover:text-white"
+                  isActive ? "bg-gold text-white" : "text-white/70 hover:bg-white/10 hover:text-white"
                 )}
               >
                 <item.icon className="w-5 h-5 mr-3 shrink-0" />
@@ -84,7 +84,7 @@ export const AdminLayout = () => {
           </div>
           <div className="flex items-center gap-4">
             <span className="text-sm text-dark/70 hidden sm:inline-block">Admin User</span>
-            <div className="w-8 h-8 bg-emerald text-white rounded-full flex items-center justify-center font-bold text-sm">
+            <div className="w-8 h-8 bg-gold text-white rounded-full flex items-center justify-center font-bold text-sm">
               A
             </div>
           </div>

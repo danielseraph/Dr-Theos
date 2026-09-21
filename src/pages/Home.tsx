@@ -1,6 +1,5 @@
 import { HeroSection } from '../components/sections/HeroSection';
-import { AboutSection } from '../components/sections/AboutSection';
-import { WorkGrowWinSection } from '../components/sections/WorkGrowWinSection';
+import { ProgramsSection } from '../components/sections/ProgramsSection';
 import { WhatWeDoSection } from '../components/sections/WhatWeDoSection';
 import { ImpactSection } from '../components/sections/ImpactSection';
 import { CommunityPostsSection } from '../components/sections/CommunityPostsSection';
@@ -10,8 +9,7 @@ export const Home = () => {
   return (
     <div className="w-full">
       <HeroSection />
-      <AboutSection />
-      <WorkGrowWinSection />
+      <ProgramsSection />
       <WhatWeDoSection />
       <ImpactSection />
       <CommunityPostsSection />

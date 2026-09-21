@@ -18,7 +18,7 @@ export const ContactForm = () => {
 
   if (status === 'success') {
     return (
-      <div className="bg-emerald/10 border border-emerald/20 p-8 rounded-2xl text-center">
+      <div className="bg-gold/10 border border-gold/20 p-8 rounded-2xl text-center">
         <h3 className="text-2xl font-bold text-navy mb-4">Message Sent!</h3>
         <p className="text-dark/70 mb-6">Thank you for reaching out to Dr. Theo's Empowerment Hub. Our team will get back to you shortly.</p>
         <Button variant="outline" onClick={() => setStatus('idle')} className="!text-navy !border-navy hover:!bg-navy hover:!text-white">
@@ -28,7 +28,7 @@ export const ContactForm = () => {
     );
   }
 
-  const inputClasses = "w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-emerald focus:border-transparent outline-none transition-all bg-gray-50 focus:bg-white";
+  const inputClasses = "w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-gold focus:border-transparent outline-none transition-all bg-gray-50 focus:bg-white";
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
