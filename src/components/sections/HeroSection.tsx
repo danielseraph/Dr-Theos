@@ -113,23 +113,8 @@ export const HeroSection = () => {
             transition={{ duration: 0.8, delay: 0.4, ease: 'easeOut' }}
             className="flex flex-wrap items-center justify-center gap-4"
           >
-            <Link to="/donate">
-              <Button variant="primary" size="lg" className="font-bold tracking-wide w-full sm:w-auto px-8">
-                DONATE
-              </Button>
-            </Link>
-            <Link to="/apply">
-              <Button variant="whiteOutline" size="lg" className="font-bold tracking-wide w-full sm:w-auto px-8">
-                APPLY FOR SUPPORT
-              </Button>
-            </Link>
-            <Link to="/volunteer">
-              <Button variant="accent" size="lg" className="font-bold tracking-wide w-full sm:w-auto px-8">
-                VOLUNTEER
-              </Button>
-            </Link>
             <Link to="/partner">
-              <Button variant="outline" size="lg" className="font-bold tracking-wide w-full sm:w-auto px-8">
+              <Button variant="whiteOutline" size="lg" className="font-bold tracking-wide w-full sm:w-auto px-8">
                 PARTNER WITH US
               </Button>
             </Link>
