@@ -56,7 +56,15 @@ const navLinks = [
       { name: 'Become a Mentor', path: '/get-involved/mentor' },
     ]
   },
-  { name: 'NEWS', path: '/news' },
+  { 
+    name: 'NEWS', 
+    path: '/news',
+    dropdown: [
+      { name: 'News & Updates', path: '/news' },
+      { name: 'Events & Programs', path: '/events' },
+    ]
+  },
+  { name: 'GALLERY', path: '/gallery' },
   { name: 'RESOURCES', path: '/resources' },
   { name: 'CONTACT', path: '/contact' },
 ];

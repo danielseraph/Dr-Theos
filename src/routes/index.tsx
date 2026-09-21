@@ -20,6 +20,11 @@ import { SuccessStories } from '../pages/SuccessStories';
 import { Transparency } from '../pages/Transparency';
 import { Donate } from '../pages/Donate';
 import { ApplicationPortal } from '../pages/ApplicationPortal';
+import { Volunteer } from '../pages/Volunteer';
+import { Partner } from '../pages/Partner';
+import { News } from '../pages/News';
+import { Events } from '../pages/Events';
+import { Gallery } from '../pages/Gallery';
 
 // Placeholder components for routing
 const Placeholder = ({ title }: { title: string }) => (
@@ -46,7 +51,14 @@ export const router = createBrowserRouter([
       { path: 'apply', element: <ApplicationPortal /> },
       { path: 'donate', element: <Donate /> },
       { path: 'get-involved/donate', element: <Donate /> },
+      { path: 'volunteer', element: <Volunteer /> },
+      { path: 'get-involved/volunteer', element: <Volunteer /> },
+      { path: 'partner', element: <Partner /> },
+      { path: 'get-involved/partner', element: <Partner /> },
       { path: 'community', element: <Placeholder title="Community" /> },
+      { path: 'news', element: <News /> },
+      { path: 'events', element: <Events /> },
+      { path: 'gallery', element: <Gallery /> },
       { path: 'posts', element: <Placeholder title="Posts" /> },
       { path: 'contact', element: <Contact /> },
       { path: 'register', element: <Register /> },
