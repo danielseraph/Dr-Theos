@@ -113,9 +113,9 @@ export const HeroSection = () => {
             transition={{ duration: 0.8, delay: 0.4, ease: 'easeOut' }}
             className="flex flex-wrap items-center justify-center gap-4"
           >
-            <Link to="/partner">
+            <Link to="/register">
               <Button variant="whiteOutline" size="lg" className="font-bold tracking-wide w-full sm:w-auto px-8">
-                PARTNER WITH US
+                JOIN US
               </Button>
             </Link>
           </motion.div>

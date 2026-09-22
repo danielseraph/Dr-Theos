@@ -86,6 +86,7 @@ export const ProgramsIndex = () => {
                     <p className={`text-sm font-semibold ${c.text}`}>{program.subtitle}</p>
                   </div>
 
+                  <img src={`https://picsum.photos/seed/${program.id}/400/200`} alt={program.title} className="w-full h-48 object-cover mb-4" />
                   {/* Card Body */}
                   <div className="p-8">
                     <p className="text-dark/60 text-sm leading-relaxed mb-6 line-clamp-3">

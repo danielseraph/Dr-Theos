@@ -23,8 +23,11 @@ import { ApplicationPortal } from '../pages/ApplicationPortal';
 import { Volunteer } from '../pages/Volunteer';
 import { Partner } from '../pages/Partner';
 import { News } from '../pages/News';
-import { Events } from '../pages/Events';
 import { Gallery } from '../pages/Gallery';
+import { Resources } from '../pages/Resources';
+import { FAQ } from '../pages/FAQ';
+import { Policies } from '../pages/Policies';
+import { Careers } from '../pages/Careers';
 
 // Placeholder components for routing
 const Placeholder = ({ title }: { title: string }) => (
@@ -57,8 +60,11 @@ export const router = createBrowserRouter([
       { path: 'get-involved/partner', element: <Partner /> },
       { path: 'community', element: <Placeholder title="Community" /> },
       { path: 'news', element: <News /> },
-      { path: 'events', element: <Events /> },
       { path: 'gallery', element: <Gallery /> },
+      { path: 'resources', element: <Resources /> },
+      { path: 'faq', element: <FAQ /> },
+      { path: 'policies', element: <Policies /> },
+      { path: 'careers', element: <Careers /> },
       { path: 'posts', element: <Placeholder title="Posts" /> },
       { path: 'contact', element: <Contact /> },
       { path: 'register', element: <Register /> },

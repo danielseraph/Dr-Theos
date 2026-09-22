@@ -7,65 +7,66 @@ import { AnimatePresence, motion } from 'framer-motion';
 
 const navLinks = [
   { name: 'HOME', path: '/' },
-  { 
-    name: 'ABOUT', 
+  {
+    name: 'ABOUT US',
     path: '/about',
     dropdown: [
-      { name: 'Our Story', path: '/about#our-story' },
-      { name: 'Mission & Vision', path: '/about/mission' },
-      { name: 'Core Values', path: '/about#core-values' },
+      { name: 'Our Mission', path: '/about/mission' },
       { name: 'Founder', path: '/about/founder' },
-      { name: 'Leadership & Board', path: '/about/leadership' },
-      { name: 'Governance', path: '/about/leadership#governance' },
-    ]
+      { name: 'Leadership', path: '/about/leadership' },
+      { name: 'Policies', path: '/about/policies' },
+    ],
   },
-  { 
-    name: 'PROGRAMS', 
+  {
+    name: 'OUR PROGRAMS',
     path: '/programs',
     dropdown: [
-      { name: 'Education & Scholarships', path: '/programs/education' },
       { name: 'Vocational Training', path: '/programs/vocational' },
-      { name: 'Entrepreneurship', path: '/programs/entrepreneurship' },
-      { name: 'Youth Empowerment', path: '/programs/youth' },
+      { name: 'Scholarships', path: '/programs/scholarships' },
+      { name: 'Business Development', path: '/programs/entrepreneurship' },
+      { name: 'Youth Development', path: '/programs/youth' },
       { name: 'Women Empowerment', path: '/programs/women' },
       { name: 'Community Development', path: '/programs/community' },
-      { name: 'Scholarships', path: '/programs/scholarships' },
       { name: 'Skills Acquisition', path: '/programs/skills' },
       { name: 'Mentorship', path: '/programs/mentorship' },
-    ]
+    ],
   },
-  { 
-    name: 'IMPACT', 
+  {
+    name: 'OUR IMPACT',
     path: '/impact',
     dropdown: [
-      { name: 'Our Impact', path: '/impact' },
+      { name: 'Impact Dashboard', path: '/impact' },
       { name: 'Success Stories', path: '/impact/success-stories' },
-      { name: 'Projects', path: '/impact/projects' },
-      { name: 'Annual Reports', path: '/impact/annual-reports' },
       { name: 'Financial Transparency', path: '/impact/financial-transparency' },
-    ]
+    ],
   },
-  { 
-    name: 'GET INVOLVED', 
+  {
+    name: 'MEDIA & NEWS',
+    path: '#',
+    dropdown: [
+      { name: 'News', path: '/news' },
+      { name: 'Events', path: '/events' },
+      { name: 'Gallery', path: '/gallery' },
+    ],
+  },
+  {
+    name: 'RESOURCES',
+    path: '#',
+    dropdown: [
+      { name: 'Educational Downloads', path: '/resources' },
+      { name: 'FAQ', path: '/faq' },
+    ],
+  },
+  {
+    name: 'GET INVOLVED',
     path: '/get-involved',
     dropdown: [
-      { name: 'Donate', path: '/get-involved/donate' },
-      { name: 'Volunteer', path: '/get-involved/volunteer' },
       { name: 'Partner With Us', path: '/get-involved/partner' },
-      { name: 'Sponsor a Program', path: '/get-involved/sponsor' },
-      { name: 'Become a Mentor', path: '/get-involved/mentor' },
-    ]
+      { name: 'Careers & Volunteer', path: '/get-involved/careers' },
+      { name: 'Donate', path: '/get-involved/donate' },
+      { name: 'Apply for Support', path: '/get-involved/apply' },
+    ],
   },
-  { 
-    name: 'NEWS', 
-    path: '/news',
-    dropdown: [
-      { name: 'News & Updates', path: '/news' },
-      { name: 'Events & Programs', path: '/events' },
-    ]
-  },
-  { name: 'GALLERY', path: '/gallery' },
-  { name: 'RESOURCES', path: '/resources' },
   { name: 'CONTACT', path: '/contact' },
 ];
 
@@ -206,18 +207,7 @@ export const Navbar = () => {
           ))}
         </div>
 
-        {/* Desktop Buttons */}
-        <div className="hidden lg:flex items-center gap-2 xl:gap-3 shrink-0">
-          <Link to="/donate">
-            <Button variant="primary" size="sm" className="whitespace-nowrap px-3 xl:px-4 py-2 text-xs xl:text-sm">DONATE</Button>
-          </Link>
-          <Link to="/apply">
-            <Button variant={isScrolled ? 'outline' : 'whiteOutline'} size="sm" className="whitespace-nowrap px-3 xl:px-4 py-2 text-xs xl:text-sm">APPLY FOR SUPPORT</Button>
-          </Link>
-          <Link to="/volunteer">
-            <Button variant="secondary" size="sm" className="whitespace-nowrap px-3 xl:px-4 py-2 text-xs xl:text-sm">VOLUNTEER</Button>
-          </Link>
-        </div>
+
 
         {/* Mobile Menu Toggle */}
         <button 
