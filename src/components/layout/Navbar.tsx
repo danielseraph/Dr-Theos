@@ -12,6 +12,8 @@ const navLinks = [
     path: '/about',
     dropdown: [
       { name: 'Our Mission', path: '/about/mission' },
+      { name: 'Vision', path: '/about/vision' },
+      { name: 'Objective', path: '/about/objective' },
       { name: 'Founder', path: '/about/founder' },
       { name: 'Leadership', path: '/about/leadership' },
       { name: 'Policies', path: '/about/policies' },
@@ -29,6 +31,7 @@ const navLinks = [
       { name: 'Community Development', path: '/programs/community' },
       { name: 'Skills Acquisition', path: '/programs/skills' },
       { name: 'Mentorship', path: '/programs/mentorship' },
+      { name: 'Children Support', path: '/programs/children' },
     ],
   },
   {

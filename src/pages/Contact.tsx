@@ -45,7 +45,8 @@ export const Contact = () => {
                     </div>
                     <div>
                       <h4 className="font-bold text-navy mb-1">Call Us</h4>
-                      <a href="tel:+2348000000000" className="text-dark/70 hover:text-gold transition-colors block">+234 (0) 800 000 0000</a>
+                      <a href="tel:+234 8103826273" className="text-dark/70 hover:text-gold transition-colors block">+234 810 382 6273</a>
+                      <a href="tel:+1 4153258335" className="text-dark/70 hover:text-gold transition-colors block">+1 415 325 8335</a>
                     </div>
                   </div>
 
@@ -55,7 +56,7 @@ export const Contact = () => {
                     </div>
                     <div>
                       <h4 className="font-bold text-navy mb-1">Office Address</h4>
-                      <p className="text-dark/70 leading-relaxed">Dr. Theo's Empowerment Hub<br/>Calabar, Cross River State<br/>Nigeria</p>
+                      <p className="text-dark/70 leading-relaxed">Dr. Theo's Empowerment Hub<br/>Bayelsa State<br/>Nigeria</p>
                     </div>
                   </div>
 

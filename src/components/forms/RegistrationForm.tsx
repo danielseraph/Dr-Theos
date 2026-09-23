@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { Button } from '../common/Button';
 
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
 export const RegistrationForm = () => {
   const [formData, setFormData] = useState({
     firstName: '',
@@ -14,6 +16,7 @@ export const RegistrationForm = () => {
 
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [serverError, setServerError] = useState('');
 
   const validate = () => {
     const newErrors: Record<string, string> = {};
@@ -35,17 +38,61 @@ export const RegistrationForm = () => {
     if (!validate()) return;
 
     setStatus('loading');
+    setServerError('');
+    setErrors({});
 
-    // Simulate API call
-    setTimeout(() => {
-      // Mock duplicate email error for testing: if email is 'test@test.com'
-      if (formData.email === 'test@test.com') {
+    try {
+      const response = await fetch(`${API_BASE_URL}/api/registrations`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          email: formData.email,
+          phoneNumber: formData.phone,
+          state: formData.state || undefined,
+          country: formData.country || undefined,
+          areaOfInterest: formData.interest,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        // Handle duplicate email (409 Conflict)
+        if (response.status === 409) {
+          setErrors({ email: data.message || 'This email is already registered.' });
+          setStatus('error');
+          return;
+        }
+
+        // Handle validation errors (422)
+        if (response.status === 422 && data.errors) {
+          const fieldErrors: Record<string, string> = {};
+          for (const err of data.errors) {
+            // Map backend field names to frontend field names
+            const fieldName = err.field === 'phoneNumber' ? 'phone' : err.field;
+            if (!fieldErrors[fieldName]) {
+              fieldErrors[fieldName] = err.message;
+            }
+          }
+          setErrors(fieldErrors);
+          setStatus('error');
+          return;
+        }
+
+        // Generic server error
+        setServerError(data.message || 'A server error occurred. Please try again later.');
         setStatus('error');
-        setErrors({ email: 'This email is already registered.' });
-      } else {
-        setStatus('success');
+        return;
       }
-    }, 1200);
+
+      // Success!
+      setStatus('success');
+    } catch (error) {
+      setServerError('Unable to connect to the server. Please check your internet connection and try again.');
+      setStatus('error');
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -78,6 +125,8 @@ export const RegistrationForm = () => {
               interest: 'General Community Updates'
             });
             setStatus('idle');
+            setErrors({});
+            setServerError('');
           }}
           className="!text-navy !border-navy hover:!bg-navy hover:!text-white"
         >
@@ -92,9 +141,9 @@ export const RegistrationForm = () => {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6 bg-white p-8 md:p-10 rounded-2xl shadow-xl border border-gray-100">
-      {status === 'error' && !errors.email && (
+      {status === 'error' && serverError && (
         <div className="p-4 bg-red-50 text-red-700 rounded-lg text-sm mb-6">
-          A server error occurred. Please try again later.
+          {serverError}
         </div>
       )}
 

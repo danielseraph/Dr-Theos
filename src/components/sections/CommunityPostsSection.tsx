@@ -17,15 +17,15 @@ const mockPosts: Post[] = [
     title: 'Annual Leadership Summit 2026',
     excerpt: 'Our most successful summit yet, bringing together leaders from across the community to chart our future course.',
     mediaType: 'image',
-    mediaUrl: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=2070&auto=format&fit=crop',
+    mediaUrl: 'theo3.jpeg',
     date: 'Sep 15, 2026'
   },
   {
     id: '2',
     title: 'The Power of Collective Growth',
-    excerpt: 'Watch the highlights from our latest interactive workshop on scaling community initiatives.',
-    mediaType: 'video',
-    mediaUrl: 'https://images.unsplash.com/photo-1515162816999-a0c47dc192f7?q=80&w=2070&auto=format&fit=crop',
+    excerpt: 'Represents the philosophy that individuals achieve greater success, resilience, and fulfillment when they collaborate, share knowledge, and lift each other up rather than competing in isolation.',
+    mediaType: 'image',
+    mediaUrl: '/theo1.jpeg',
     date: 'Sep 10, 2026'
   },
   {
@@ -33,7 +33,7 @@ const mockPosts: Post[] = [
     title: 'New Mentorship Program Launch',
     excerpt: 'Connecting experienced professionals with emerging talent to accelerate shared success.',
     mediaType: 'image',
-    mediaUrl: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop',
+    mediaUrl: '/theo2.jpeg',
     date: 'Sep 05, 2026'
   }
 ];

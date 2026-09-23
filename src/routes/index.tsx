@@ -46,6 +46,8 @@ export const router = createBrowserRouter([
       { path: 'about/founder', element: <Founder /> },
       { path: 'about/leadership', element: <Leadership /> },
       { path: 'about/mission', element: <Mission /> },
+      { path: 'about/vision', element: <Mission /> },
+      { path: 'about/objective', element: <Mission /> },
       { path: 'programs', element: <ProgramsIndex /> },
       { path: 'programs/:id', element: <ProgramDetail /> },
       { path: 'impact', element: <Impact /> },

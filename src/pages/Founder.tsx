@@ -30,9 +30,9 @@ export const Founder = () => {
       {/* Bio Section */}
       <section className="py-24 bg-offwhite px-6">
         <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
-              <div className="relative">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+            <motion.div className="lg:col-span-5" initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
+              <div className="relative lg:sticky lg:top-32">
                 <div className="absolute -top-4 -left-4 w-full h-full bg-gold/20 rounded-3xl" />
                 <img
                   src="/Dr Theo.jpeg"
@@ -42,18 +42,22 @@ export const Founder = () => {
               </div>
             </motion.div>
 
-            <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
+            <motion.div className="lg:col-span-7" initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
               <h2 className="text-3xl font-bold text-navy mb-6">A Life Dedicated to Service</h2>
-              <div className="space-y-4 text-dark/70 leading-relaxed">
+              <div className="space-y-6 text-dark/80 leading-relaxed text-lg">
                 <p>
-                  Prince Engr. Dr. John Theophilus Okosigha - widely known as "Dr. Theo" - is a distinguished engineer, academic, and committed humanitarian. Born and raised in Bayelsa State, Nigeria, he carries a deep personal understanding of the challenges faced by communities in the region.
+                  <strong>Prince Engr. Dr. John Theophilus Okosigha</strong>, widely known as <strong>"Dr. Theo,"</strong> is a distinguished engineer, academic, technology professional, and humanitarian with extensive international and professional experience.
                 </p>
                 <p>
-                  Driven by a conviction that every person deserves the opportunity to realize their full potential regardless of their background, Dr. Theo founded the Empowerment Hub to bridge the gap between aspiration and opportunity for underprivileged individuals, women, youth, and entrepreneurs.
+                  He holds a <strong>BSc in Naval Architecture and Marine Engineering</strong>, a <strong>Master of Engineering Technology</strong>, and a <strong>PhD in Technology Management</strong>. His professional experience spans engineering, customer service, technical support, quality assurance, supervision, mentoring, and executive virtual assistance, including supporting clients and customers across the United States, Canada, Puerto Rico, and Mexico.
                 </p>
                 <p>
-                  His vision is rooted in the belief that sustainable community development is achieved not through charity alone, but through education, skills acquisition, mentorship, and economic empowerment giving people not just fish, but the tools to fish for themselves.
+                  Born and raised in Opume Community, Ogbia L.G.A, Bayelsa State, Nigeria, Dr. Theo is deeply committed to empowering individuals and strengthening communities. This commitment led him to establish the <strong>Empowerment Hub</strong>, an initiative focused on education, skills development, mentorship, entrepreneurship, and economic empowerment for underprivileged individuals, women, youth, and entrepreneurs.
                 </p>
+                
+                <blockquote className="border-l-4 border-gold pl-6 py-4 my-8 italic font-medium text-navy/80 bg-gold/5 rounded-r-lg">
+                  "His philosophy is simple: sustainable change comes from giving people not only opportunities, but also the knowledge and tools to create better futures for themselves and their communities."
+                </blockquote>
               </div>
             </motion.div>
           </div>
