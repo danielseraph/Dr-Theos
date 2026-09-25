@@ -52,12 +52,24 @@ export const Founder = () => {
                   He holds a <strong>BSc in Naval Architecture and Marine Engineering</strong>, a <strong>Master of Engineering Technology</strong>, and a <strong>PhD in Technology Management</strong>. His professional experience spans engineering, customer service, technical support, quality assurance, supervision, mentoring, and executive virtual assistance, including supporting clients and customers across the United States, Canada, Puerto Rico, and Mexico.
                 </p>
                 <p>
-                  Born and raised in Opume Community, Ogbia L.G.A, Bayelsa State, Nigeria, Dr. Theo is deeply committed to empowering individuals and strengthening communities. This commitment led him to establish the <strong>Empowerment Hub</strong>, an initiative focused on education, skills development, mentorship, entrepreneurship, and economic empowerment for underprivileged individuals, women, youth, and entrepreneurs.
+                  Born and raised in Opume Community, Ogbia L.G.A, Bayelsa State, Nigeria, Dr. Theo is deeply committed to empowering individuals and strengthening communities. This commitment led him to establish the <strong>Empowerment Hub</strong>, an initiative focused on education, skills development, mentorship, entrepreneurship, and economic empowerment for underprivileged individuals, children, women, youth, and entrepreneurs.
                 </p>
                 
                 <blockquote className="border-l-4 border-gold pl-6 py-4 my-8 italic font-medium text-navy/80 bg-gold/5 rounded-r-lg">
                   "His philosophy is simple: sustainable change comes from giving people not only opportunities, but also the knowledge and tools to create better futures for themselves and their communities."
                 </blockquote>
+
+                <div className="mt-12 p-8 bg-white rounded-2xl shadow-sm border border-gray-100 flex flex-col md:flex-row gap-8 items-center">
+                  <div className="w-40 h-40 md:w-48 md:h-48 shrink-0 rounded-full overflow-hidden border-4 border-gold/20 shadow-md">
+                    <img src="/mama.jpg" alt="Dr. Theo's Mother" className="w-full h-full object-cover" />
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-bold text-navy mb-3">A Legacy of Love & Inspiration</h3>
+                    <p className="text-dark/80 leading-relaxed text-base">
+                      The profound dedication to service and community empowerment that drives the Hub is deeply inspired by the life, values, and enduring legacy of Dr. Theo's beloved mother. Her spirit of generosity, resilience, and unwavering belief in lifting others up remain the guiding light behind every initiative the Empowerment Hub undertakes.
+                    </p>
+                  </div>
+                </div>
               </div>
             </motion.div>
           </div>

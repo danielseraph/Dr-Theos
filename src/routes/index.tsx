@@ -16,6 +16,7 @@ import { Mission } from '../pages/Mission';
 import { ProgramsIndex } from '../pages/programs/ProgramsIndex';
 import { ProgramDetail } from '../pages/programs/ProgramDetail';
 import { Impact } from '../pages/Impact';
+import { MemorialSupport } from '../pages/MemorialSupport';
 import { SuccessStories } from '../pages/SuccessStories';
 import { Transparency } from '../pages/Transparency';
 import { Donate } from '../pages/Donate';
@@ -51,6 +52,7 @@ export const router = createBrowserRouter([
       { path: 'programs', element: <ProgramsIndex /> },
       { path: 'programs/:id', element: <ProgramDetail /> },
       { path: 'impact', element: <Impact /> },
+      { path: 'impact/memorial-support', element: <MemorialSupport /> },
       { path: 'impact/success-stories', element: <SuccessStories /> },
       { path: 'impact/financial-transparency', element: <Transparency /> },
       { path: 'apply', element: <ApplicationPortal /> },

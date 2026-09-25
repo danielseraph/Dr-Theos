@@ -36,7 +36,7 @@ const programs = [
     id: 'community',
     title: 'Community Development',
     description: 'Building stronger, more resilient communities through collaborative local projects.',
-    image: '/youth.jpeg'
+    image: '/comm-deve.jpg'
   }
 ];
 
