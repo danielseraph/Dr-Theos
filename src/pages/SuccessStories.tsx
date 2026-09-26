@@ -44,7 +44,7 @@ export const SuccessStories = () => {
                   { id: 1, title: 'Student Support Testimonial 1', src: '/student1.mp4' },
                   { id: 2, title: 'Student Support Testimonial 2', src: '/student2.mp4' },
                   { id: 3, title: 'Student Support Testimonial 3', src: '/beneficiary3.mp4' }
-                ].map((video) => (
+                ].map((video: any) => (
                   <div key={video.id} className="bg-offwhite rounded-3xl overflow-hidden shadow-sm border border-gray-100 relative">
                     <video src={video.src} controls className="w-full aspect-video object-cover bg-navy" preload="metadata" />
                     <div className="p-4"><h4 className="font-bold text-navy text-center">{video.title}</h4></div>
@@ -61,7 +61,7 @@ export const SuccessStories = () => {
                   { id: 4, title: 'Tailoring Training (Female) 1', src: '/beneficiary4.mp4' },
                   { id: 5, title: 'Tailoring Training (Female) 2', src: '/beneficiary5.mp4' },
                   { id: 6, title: 'Tailoring Training (Female) 3', src: '/beneficiary7.mp4' }
-                ].map((video) => (
+                ].map((video: any) => (
                   <div key={video.id} className="bg-offwhite rounded-3xl overflow-hidden shadow-sm border border-gray-100 relative">
                     <video src={video.src} controls className="w-full aspect-video object-cover bg-navy" preload="metadata" />
                     <div className="p-4"><h4 className="font-bold text-navy text-center">{video.title}</h4></div>
@@ -78,7 +78,7 @@ export const SuccessStories = () => {
                   { id: 7, title: 'Tailoring Training (Male) 1', placeholder: true },
                   { id: 8, title: 'Tailoring Training (Male) 2', placeholder: true },
                   { id: 9, title: 'Tailoring Training (Male) 3', placeholder: true }
-                ].map((video) => (
+                ].map((video: any) => (
                   <div key={video.id} className="bg-offwhite rounded-3xl overflow-hidden shadow-sm border border-gray-100 relative h-full flex flex-col">
                     {video.placeholder ? (
                       <div className="w-full aspect-video bg-gray-200 flex items-center justify-center text-dark/40 font-medium">Coming Soon</div>
@@ -99,7 +99,7 @@ export const SuccessStories = () => {
                   { id: 13, title: 'Tailoring Training Highlight', src: '/tailoring.mp4' },
                   { id: 14, title: 'Training Highlight 1', src: '/beneficiary2.mp4' },
                   { id: 15, title: 'Training Highlight 2', src: '/beneficiary1.mp4' }
-                ].map((video) => (
+                ].map((video: any) => (
                   <div key={video.id} className="bg-offwhite rounded-3xl overflow-hidden shadow-sm border border-gray-100 relative h-full flex flex-col">
                     {video.placeholder ? (
                       <div className="w-full aspect-video bg-gray-200 flex items-center justify-center text-dark/40 font-medium">Coming Soon</div>
@@ -120,7 +120,7 @@ export const SuccessStories = () => {
                   { id: 10, title: 'Representative Speech 1', src: '/Event1.mp4' },
                   { id: 11, title: 'Representative Speech 2', src: '/Event2.mp4' },
                   { id: 12, title: 'Representative Speech 3', placeholder: true }
-                ].map((video) => (
+                ].map((video: any) => (
                   <div key={video.id} className="bg-offwhite rounded-3xl overflow-hidden shadow-sm border border-gray-100 relative h-full flex flex-col">
                     {video.placeholder ? (
                       <div className="w-full aspect-video bg-gray-200 flex items-center justify-center text-dark/40 font-medium">Coming Soon</div>

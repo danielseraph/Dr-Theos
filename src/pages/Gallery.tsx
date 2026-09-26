@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Play, Image as ImageIcon, Video, Filter } from 'lucide-react';
+import { Filter } from 'lucide-react';
 
 const photoCategories = ['All', 'Training', 'Beneficiaries', 'Community Projects', 'Events', 'Donations', 'Outreach'];
 

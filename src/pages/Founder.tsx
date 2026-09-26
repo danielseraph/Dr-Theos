@@ -5,7 +5,7 @@ import { Award, BookOpen, Heart, ArrowRight } from 'lucide-react';
 const achievements = [
   { icon: <Award className="w-6 h-6" />, title: 'Engineer & Doctorate', desc: 'A seasoned professional with expertise in engineering and academic distinction.' },
   { icon: <BookOpen className="w-6 h-6" />, title: 'Educator & Mentor', desc: 'Dedicated to nurturing the next generation of leaders through education and guidance.' },
-  { icon: <Heart className="w-6 h-6" />, title: 'Community Champion', desc: 'Committed to empowering vulnerable individuals and communities across Cross River State.' },
+  { icon: <Heart className="w-6 h-6" />, title: 'Community Champion', desc: 'Committed to empowering vulnerable individuals and communities across Bayelsa State.' },
 ];
 
 export const Founder = () => {
