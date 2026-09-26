@@ -49,12 +49,26 @@ const StatItem: React.FC<StatItemProps> = ({ endValue, suffix, label }) => {
 };
 
 export const ImpactSection = () => {
-  // Placeholder data that will eventually come from the API
+  const [totalRegistered, setTotalRegistered] = useState<number | null>(null);
+
+  useEffect(() => {
+    fetch('https://theo-api-production.up.railway.app/api/v1/registrations/count')
+      .then(res => res.json())
+      .then(data => {
+        if (data && typeof data.count === 'number') {
+          setTotalRegistered(data.count);
+        }
+      })
+      .catch(err => console.error('Error fetching registration count:', err));
+  }, []);
+
+  // Real data pulled from recent initiatives, plus live registration count
   const stats = [
-    { value: 500, suffix: '+', label: 'People Connected' },
-    { value: 20, suffix: '+', label: 'Projects' },
-    { value: 15, suffix: '+', label: 'Partnerships' },
-    { value: 5, suffix: '+', label: 'Communities Reached' },
+    { value: totalRegistered !== null ? totalRegistered : 0, suffix: '+', label: 'Registered Members' },
+    { value: 56, suffix: '', label: 'Total Beneficiaries' },
+    { value: 12, suffix: '', label: 'Vocational Trainees' },
+    { value: 7, suffix: '', label: 'Entrepreneurs Assisted' },
+    { value: 5, suffix: '', label: 'Students Supported' },
   ];
 
   return (
@@ -75,7 +89,7 @@ export const ImpactSection = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 md:gap-8">
           {stats.map((stat, index) => (
             <StatItem 
               key={index}

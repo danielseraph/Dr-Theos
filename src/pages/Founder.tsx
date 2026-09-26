@@ -53,7 +53,7 @@ export const Founder = () => {
                   Born and raised in Opume Community, Ogbia L.G.A., Bayelsa State, Nigeria, Dr. Theo is deeply committed to empowering individuals and strengthening communities. His passion for helping others is also deeply personal, inspired by the love, sacrifices, values, and unwavering support of his late mother, <strong>Queen Isekpar Theophilus Okosigha</strong>, as well as his beloved wife, <strong>Queen Merjerie Sorongon-Okosigha</strong>, whose love, encouragement, and support continue to inspire him.
                 </p>
                 <p>
-                  His wife, Queen Merjerie, serves as the Co-Founder and Executive Director of Dr. Theo's Empowerment Hub, working alongside him in advancing the organization's vision of creating opportunities and making a meaningful difference in the lives of others. Dr. Theo deeply values her as both his life partner and his partner in service, and together they are committed to building a culture of love, support, empowerment, accountability, and shared growth.
+                  His wife, Queen Merjerie, serves as the Co-Founder and Deputy Executive Director of Dr. Theo's Empowerment Hub, working alongside him in advancing the organization's vision of creating opportunities and making a meaningful difference in the lives of others. Dr. Theo deeply values her as both his life partner and his partner in service, and together they are committed to building a culture of love, support, empowerment, accountability, and shared growth.
                 </p>
                 <p>
                   This shared vision led to the establishment of <strong>Dr. Theo's Empowerment Hub</strong>, an initiative focused on education, skills development, mentorship, entrepreneurship, and economic empowerment for underprivileged individuals, children, women, youth, and entrepreneurs.
@@ -64,12 +64,12 @@ export const Founder = () => {
 
                 <div className="clear-both pt-8"></div><div className="mt-12 p-8 bg-white rounded-2xl shadow-sm border border-gray-100 flex flex-col md:flex-row gap-8 items-center">
                   <div className="w-40 h-40 md:w-48 md:h-48 shrink-0 rounded-full overflow-hidden border-4 border-gold/20 shadow-md">
-                    <img src="/mama.jpg" alt="Queen Isekpar Theophilus Okosigha" className="w-full h-full object-cover" />
+                    <img src="/mama.jpg" alt="Late Queen Isekpar Theophilus Okosigha" className="w-full h-full object-cover" />
                   </div>
                   <div>
                     <h3 className="text-2xl font-bold text-navy mb-3">A Legacy of Love & Inspiration</h3>
                     <p className="text-dark/80 leading-relaxed text-base">
-                      The profound dedication to service and community empowerment that drives the Hub is deeply inspired by the life, values, and enduring legacy of Dr. Theo's beloved mother, Queen Isekpar Theophilus Okosigha. Her spirit of generosity, resilience, and unwavering belief in lifting others up remain the guiding light behind every initiative the Empowerment Hub undertakes.
+                      The profound dedication to service and community empowerment that drives the Hub is deeply inspired by the life, values, and enduring legacy of Dr. Theo's beloved mother, Late Queen Isekpar Theophilus Okosigha. Her spirit of generosity, resilience, and unwavering belief in lifting others up remain the guiding light behind every initiative the Empowerment Hub undertakes.
                     </p>
                   </div>
                 </div>

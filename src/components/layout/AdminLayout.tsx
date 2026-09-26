@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Outlet, Link, useLocation } from 'react-router-dom';
 import { LayoutDashboard, Users, FileText, Image as ImageIcon, Settings, LogOut, Menu, X } from 'lucide-react';
 import { cn } from '../../utils/cn';
@@ -6,6 +6,13 @@ import { cn } from '../../utils/cn';
 export const AdminLayout = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const location = useLocation();
+  const mainContentRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (mainContentRef.current) {
+      mainContentRef.current.scrollTop = 0;
+    }
+  }, [location.pathname]);
 
   const navigation = [
     { name: 'Dashboard', href: '/admin', icon: LayoutDashboard },
@@ -90,7 +97,7 @@ export const AdminLayout = () => {
           </div>
         </header>
         
-        <div className="flex-1 overflow-auto p-6 md:p-8">
+        <div ref={mainContentRef} className="flex-1 overflow-auto p-6 md:p-8">
           <Outlet />
         </div>
       </main>

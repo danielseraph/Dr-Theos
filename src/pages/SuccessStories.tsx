@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Star, BookOpen, Wrench, Briefcase } from 'lucide-react';
+import { Star, BookOpen, Wrench, Briefcase, Sparkles } from 'lucide-react';
 
 export const SuccessStories = () => {
   return (
@@ -53,18 +53,38 @@ export const SuccessStories = () => {
               </div>
             </div>
 
+            {/* Category: Nail Tech Training */}
+            <div>
+              <h3 className="text-2xl font-bold text-navy mb-6 flex items-center gap-2"><Sparkles className="w-6 h-6 text-gold" /> Nail Tech Training</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {[
+                  { id: 'nt1', title: 'Nail Tech Training 1', src: '/beneficiary4.mp4' },
+                  { id: 'nt2', title: 'Nail Tech Training 2', src: '/beneficiary5.mp4' },
+                  { id: 'nt3', title: 'Nail Tech Training 3', src: '/beneficiary6.mp4' }
+                ].map((video: any) => (
+                  <div key={video.id} className="bg-offwhite rounded-3xl overflow-hidden shadow-sm border border-gray-100 relative">
+                    <video src={video.src} controls className="w-full aspect-video object-cover bg-navy" preload="metadata" />
+                    <div className="p-4"><h4 className="font-bold text-navy text-center">{video.title}</h4></div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
             {/* Category: Females Tailoring */}
             <div>
               <h3 className="text-2xl font-bold text-navy mb-6 flex items-center gap-2"><Wrench className="w-6 h-6 text-gold" /> Females Tailoring Training</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {[
-                  { id: 4, title: 'Tailoring Training (Female) 1', src: '/beneficiary4.mp4' },
-                  { id: 5, title: 'Tailoring Training (Female) 2', src: '/beneficiary5.mp4' },
-                  { id: 6, title: 'Tailoring Training (Female) 3', src: '/beneficiary7.mp4' }
+                  { id: 'ft1', title: 'Tailoring Training (Female) 1', src: '/beneficiary1.mp4' },
+                  { id: 'ft2', title: 'Tailoring Training (Female) 2', src: '/beneficiary2.mp4' }
                 ].map((video: any) => (
-                  <div key={video.id} className="bg-offwhite rounded-3xl overflow-hidden shadow-sm border border-gray-100 relative">
-                    <video src={video.src} controls className="w-full aspect-video object-cover bg-navy" preload="metadata" />
-                    <div className="p-4"><h4 className="font-bold text-navy text-center">{video.title}</h4></div>
+                  <div key={video.id} className="bg-offwhite rounded-3xl overflow-hidden shadow-sm border border-gray-100 relative h-full flex flex-col">
+                    {video.placeholder ? (
+                      <div className="w-full aspect-video bg-gray-200 flex items-center justify-center text-dark/40 font-medium">Coming Soon</div>
+                    ) : (
+                      <video src={video.src} controls className="w-full aspect-video object-cover bg-navy" preload="metadata" />
+                    )}
+                    <div className="p-4 mt-auto"><h4 className="font-bold text-navy text-center">{video.title}</h4></div>
                   </div>
                 ))}
               </div>
@@ -75,9 +95,8 @@ export const SuccessStories = () => {
               <h3 className="text-2xl font-bold text-navy mb-6 flex items-center gap-2"><Wrench className="w-6 h-6 text-gold" /> Males Tailoring Training</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {[
-                  { id: 7, title: 'Tailoring Training (Male) 1', placeholder: true },
-                  { id: 8, title: 'Tailoring Training (Male) 2', placeholder: true },
-                  { id: 9, title: 'Tailoring Training (Male) 3', placeholder: true }
+                  { id: 'mt1', title: 'Tailoring Training (Male) 1', src: '/beneficiary7.mp4' },
+                  { id: 'mt2', title: 'Tailoring Training (Male) 2', src: '/beneficiary8.mp4' }
                 ].map((video: any) => (
                   <div key={video.id} className="bg-offwhite rounded-3xl overflow-hidden shadow-sm border border-gray-100 relative h-full flex flex-col">
                     {video.placeholder ? (
@@ -96,9 +115,7 @@ export const SuccessStories = () => {
               <h3 className="text-2xl font-bold text-navy mb-6 flex items-center gap-2"><Briefcase className="w-6 h-6 text-gold" /> Training Programs</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {[
-                  { id: 13, title: 'Tailoring Training Highlight', src: '/tailoring.mp4' },
-                  { id: 14, title: 'Training Highlight 1', src: '/beneficiary2.mp4' },
-                  { id: 15, title: 'Training Highlight 2', src: '/beneficiary1.mp4' }
+                  { id: 13, title: 'Tailoring Training Highlight', src: '/tailoring.mp4' }
                 ].map((video: any) => (
                   <div key={video.id} className="bg-offwhite rounded-3xl overflow-hidden shadow-sm border border-gray-100 relative h-full flex flex-col">
                     {video.placeholder ? (

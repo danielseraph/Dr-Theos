@@ -56,7 +56,7 @@ export const Contact = () => {
                     </div>
                     <div>
                       <h4 className="font-bold text-navy mb-1">Office Address</h4>
-                      <p className="text-dark/70 leading-relaxed">Dr. Theo's Empowerment Hub<br/>Bayelsa State<br/>Nigeria</p>
+                      <p className="text-dark/70 leading-relaxed">Dr. Theo's Empowerment Hub<br/>53 Erepa Road, Yenagoa<br/>Bayelsa State 560001 -560233, Nigeria</p>
                     </div>
                   </div>
 

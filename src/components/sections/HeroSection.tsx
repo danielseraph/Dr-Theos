@@ -50,7 +50,7 @@ export const HeroSection = () => {
         </AnimatePresence>
 
         {/* Dark overlay for text readability */}
-        <div className="absolute inset-0 bg-navy/70" />
+        <div className="absolute inset-0 bg-navy/40" />
         {/* Subtle grid pattern on top */}
         <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[size:24px_24px]" />
       </div>
@@ -98,14 +98,23 @@ export const HeroSection = () => {
             Creating opportunities.
           </h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
-            className="text-lg md:text-2xl text-white/80 mb-10 text-balance leading-relaxed max-w-3xl mx-auto"
-          >
-            We are dedicated to building a brighter future by providing the resources, education, and support necessary for individuals and communities to thrive and achieve meaningful progress.
-          </motion.p>
+          <div className="overflow-hidden h-[120px] md:h-[100px] flex items-center justify-center mb-6">
+            <motion.p
+              animate={{ 
+                opacity: [0, 1, 1, 0], 
+                x: [-100, 0, 0, 100] 
+              }}
+              transition={{ 
+                duration: 8, 
+                repeat: Infinity,
+                times: [0, 0.15, 0.85, 1],
+                ease: "easeInOut" 
+              }}
+              className="text-lg md:text-2xl text-white/80 text-balance leading-relaxed max-w-3xl mx-auto"
+            >
+              We are dedicated to building a brighter future by providing the resources, education, and support necessary for individuals and communities to thrive and achieve meaningful progress.
+            </motion.p>
+          </div>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}

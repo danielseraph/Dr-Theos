@@ -9,7 +9,7 @@ He holds a BSc in Naval Architecture and Marine Engineering, a Master of Enginee
 
 Born and raised in Opume Community, Ogbia L.G.A., Bayelsa State, Nigeria, Dr. Theo is deeply committed to empowering individuals and strengthening communities. His passion for helping others is also deeply personal, inspired by the love, sacrifices, values, and unwavering support of his late mother, Queen Isekpar Theophilus Okosigha, as well as his beloved wife, Queen Merjerie Sorongon-Okosigha, whose love, encouragement, and support continue to inspire him.
 
-His wife, Queen Merjerie, serves as the Co-Founder and Executive Director of Dr. Theo’s Empowerment Hub, working alongside him in advancing the organization’s vision of creating opportunities and making a meaningful difference in the lives of others. Dr. Theo deeply values her as both his life partner and his partner in service, and together they are committed to building a culture of love, support, empowerment, accountability, and shared growth.
+His wife, Queen Merjerie, serves as the Co-Founder and Deputy Executive Director of Dr. Theo’s Empowerment Hub, working alongside him in advancing the organization’s vision of creating opportunities and making a meaningful difference in the lives of others. Dr. Theo deeply values her as both his life partner and his partner in service, and together they are committed to building a culture of love, support, empowerment, accountability, and shared growth.
 
 This shared vision led to the establishment of Dr. Theo’s Empowerment Hub, an initiative focused on education, skills development, mentorship, entrepreneurship, and economic empowerment for underprivileged individuals, children, women, youth, and entrepreneurs.
 

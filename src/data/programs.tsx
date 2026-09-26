@@ -130,7 +130,7 @@ export const programs: Program[] = [
       { label: 'Technical & Artisan Trades', desc: 'Carpentry, plumbing, welding, electrical work, and other artisan trades for infrastructure demand.', icon: <Hammer className="w-6 h-6 text-gold" /> },
     ],
     subPrograms: [
-      { name: 'Tailoring Academy', desc: 'A 3-6 month intensive garment construction programme with start-up tool kit upon graduation.', icon: <Scissors className="w-6 h-6 text-gold" /> },
+      { name: 'Tailoring Academy', desc: 'A 12-18 month intensive garment construction programme with start-up tool kit upon graduation.', icon: <Scissors className="w-6 h-6 text-gold" /> },
       { name: 'Beauty & Cosmetology School', desc: 'Professional beauty training covering skin care, nail technology, and hair styling.', icon: <Sparkles className="w-6 h-6 text-gold" /> },
       { name: 'Fashion & Design Studio', desc: 'Creative fashion design with business modules to help graduates launch their own labels.', icon: <Scissors className="w-6 h-6 text-gold" /> },
       { name: 'Digital Skills Hub', desc: 'Online and offline digital literacy training for youth and women.', icon: <Laptop className="w-6 h-6 text-gold" /> },
@@ -138,7 +138,7 @@ export const programs: Program[] = [
     ],
     eligibility: [
       'Age 16-45 (exceptions considered for widows and persons with disabilities)',
-      'Ability to commit to the full duration of the course (typically 3-6 months)',
+      'Ability to commit to the full duration of the course (typically 3-18 months)',
       'Demonstrated financial need or limited access to private training',
       'Must be a resident in or near our operational areas',
       'No prior experience required -- beginner courses available',

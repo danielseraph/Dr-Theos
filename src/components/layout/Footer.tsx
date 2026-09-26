@@ -35,7 +35,7 @@ export const Footer = () => {
               <li>info@drtheoshub.org</li>
               <li>+234 810 382 6273</li>
               <li>+1 415 325 8335</li>
-              <li>Dr. Theo's Empowerment Hub<br />Bayelsa State<br/>Nigeria</li>
+              <li>Dr. Theo's Empowerment Hub<br />53 Erepa Road, Yenagoa<br/>Bayelsa State 560001 -560233, Nigeria</li>
             </ul>
           </div>
 

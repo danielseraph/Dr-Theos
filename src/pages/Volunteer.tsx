@@ -195,7 +195,7 @@ export const Volunteer = () => {
             <MapPin className="w-10 h-10 text-gold mb-4" />
             <h3 className="text-2xl font-bold mb-4">Locations</h3>
             <ul className="space-y-3 text-white/70 text-sm">
-              <li className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 text-gold shrink-0 mt-0.5" /> Cross River State, Nigeria (Headquarters)</li>
+              <li className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 text-gold shrink-0 mt-0.5" /> 53 Erepa Road, Yenagoa, Bayelsa State 560001 -560233, Nigeria (Headquarters)</li>
               <li className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 text-gold shrink-0 mt-0.5" /> Surrounding communities and outreach areas</li>
               <li className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 text-gold shrink-0 mt-0.5" /> United States — remote coordination roles</li>
               <li className="flex items-start gap-2"><CheckCircle2 className="w-4 h-4 text-gold shrink-0 mt-0.5" /> Fully remote roles open to global applicants</li>
