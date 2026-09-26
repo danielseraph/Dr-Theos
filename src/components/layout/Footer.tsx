@@ -33,8 +33,9 @@ export const Footer = () => {
             <h4 className="text-gold font-semibold mb-4 text-sm tracking-widest uppercase">Contact</h4>
             <ul className="space-y-3 text-white/70 text-sm">
               <li>info@drtheoshub.org</li>
-              <li>+234 (0) 800 000 0000</li>
-              <li>Dr. Theo's Empowerment Hub<br />Calabar, Cross River State<br/>Nigeria</li>
+              <li>+234 810 382 6273</li>
+              <li>+1 415 325 8335</li>
+              <li>Dr. Theo's Empowerment Hub<br />Bayelsa State<br/>Nigeria</li>
             </ul>
           </div>
 

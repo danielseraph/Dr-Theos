@@ -39,7 +39,7 @@ const navLinks = [
     path: '/impact',
     dropdown: [
       { name: 'Impact Dashboard', path: '/impact' },
-      { name: 'Memorial Support', path: '/impact/memorial-support' },
+      { name: 'Support', path: '/impact/support' },
       { name: 'Success Stories', path: '/impact/success-stories' },
       { name: 'Financial Transparency', path: '/impact/financial-transparency' },
     ],

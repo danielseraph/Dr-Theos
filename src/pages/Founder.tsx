@@ -30,9 +30,9 @@ export const Founder = () => {
       {/* Bio Section */}
       <section className="py-24 bg-offwhite px-6">
         <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
-            <motion.div className="lg:col-span-5" initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
-              <div className="relative lg:sticky lg:top-32">
+          <div className="block">
+            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+              <div className="float-none lg:float-left lg:w-[40%] lg:mr-10 mb-8 mt-2 relative">
                 <div className="absolute -top-4 -left-4 w-full h-full bg-gold/20 rounded-3xl" />
                 <img
                   src="/Dr Theo.jpeg"
@@ -40,33 +40,36 @@ export const Founder = () => {
                   className="relative z-10 w-full rounded-3xl object-cover shadow-2xl"
                 />
               </div>
-            </motion.div>
-
-            <motion.div className="lg:col-span-7" initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
+            
               <h2 className="text-3xl font-bold text-navy mb-6">A Life Dedicated to Service</h2>
               <div className="space-y-6 text-dark/80 leading-relaxed text-lg">
                 <p>
-                  <strong>Prince Engr. Dr. John Theophilus Okosigha</strong>, widely known as <strong>"Dr. Theo,"</strong> is a distinguished engineer, academic, technology professional, and humanitarian with extensive international and professional experience.
+                  <strong>Prince Engr. Dr. John Theophilus Okosigha</strong>, widely known as <strong>"Dr. Theo,"</strong> is a distinguished engineer, academic, technology professional, entrepreneur, and humanitarian with extensive international and professional experience.
                 </p>
                 <p>
                   He holds a <strong>BSc in Naval Architecture and Marine Engineering</strong>, a <strong>Master of Engineering Technology</strong>, and a <strong>PhD in Technology Management</strong>. His professional experience spans engineering, customer service, technical support, quality assurance, supervision, mentoring, and executive virtual assistance, including supporting clients and customers across the United States, Canada, Puerto Rico, and Mexico.
                 </p>
                 <p>
-                  Born and raised in Opume Community, Ogbia L.G.A, Bayelsa State, Nigeria, Dr. Theo is deeply committed to empowering individuals and strengthening communities. This commitment led him to establish the <strong>Empowerment Hub</strong>, an initiative focused on education, skills development, mentorship, entrepreneurship, and economic empowerment for underprivileged individuals, children, women, youth, and entrepreneurs.
+                  Born and raised in Opume Community, Ogbia L.G.A., Bayelsa State, Nigeria, Dr. Theo is deeply committed to empowering individuals and strengthening communities. His passion for helping others is also deeply personal, inspired by the love, sacrifices, values, and unwavering support of his late mother, <strong>Queen Isekpar Theophilus Okosigha</strong>, as well as his beloved wife, <strong>Queen Merjerie Sorongon-Okosigha</strong>, whose love, encouragement, and support continue to inspire him.
                 </p>
-                
-                <blockquote className="border-l-4 border-gold pl-6 py-4 my-8 italic font-medium text-navy/80 bg-gold/5 rounded-r-lg">
-                  "His philosophy is simple: sustainable change comes from giving people not only opportunities, but also the knowledge and tools to create better futures for themselves and their communities."
-                </blockquote>
+                <p>
+                  His wife, Queen Merjerie, serves as the Co-Founder and Executive Director of Dr. Theo's Empowerment Hub, working alongside him in advancing the organization's vision of creating opportunities and making a meaningful difference in the lives of others. Dr. Theo deeply values her as both his life partner and his partner in service, and together they are committed to building a culture of love, support, empowerment, accountability, and shared growth.
+                </p>
+                <p>
+                  This shared vision led to the establishment of <strong>Dr. Theo's Empowerment Hub</strong>, an initiative focused on education, skills development, mentorship, entrepreneurship, and economic empowerment for underprivileged individuals, children, women, youth, and entrepreneurs.
+                </p>
+                <p>
+                  For Dr. Theo, empowerment is more than providing assistance—it is about building people, creating opportunities, developing capacity, and helping individuals become capable of helping themselves and others. Through the Empowerment Hub, he and his wife seek to extend the love, support, and values that have shaped their own lives to individuals and communities in need.
+                </p>
 
-                <div className="mt-12 p-8 bg-white rounded-2xl shadow-sm border border-gray-100 flex flex-col md:flex-row gap-8 items-center">
+                <div className="clear-both pt-8"></div><div className="mt-12 p-8 bg-white rounded-2xl shadow-sm border border-gray-100 flex flex-col md:flex-row gap-8 items-center">
                   <div className="w-40 h-40 md:w-48 md:h-48 shrink-0 rounded-full overflow-hidden border-4 border-gold/20 shadow-md">
-                    <img src="/mama.jpg" alt="Dr. Theo's Mother" className="w-full h-full object-cover" />
+                    <img src="/mama.jpg" alt="Queen Isekpar Theophilus Okosigha" className="w-full h-full object-cover" />
                   </div>
                   <div>
                     <h3 className="text-2xl font-bold text-navy mb-3">A Legacy of Love & Inspiration</h3>
                     <p className="text-dark/80 leading-relaxed text-base">
-                      The profound dedication to service and community empowerment that drives the Hub is deeply inspired by the life, values, and enduring legacy of Dr. Theo's beloved mother. Her spirit of generosity, resilience, and unwavering belief in lifting others up remain the guiding light behind every initiative the Empowerment Hub undertakes.
+                      The profound dedication to service and community empowerment that drives the Hub is deeply inspired by the life, values, and enduring legacy of Dr. Theo's beloved mother, Queen Isekpar Theophilus Okosigha. Her spirit of generosity, resilience, and unwavering belief in lifting others up remain the guiding light behind every initiative the Empowerment Hub undertakes.
                     </p>
                   </div>
                 </div>
@@ -110,3 +113,4 @@ export const Founder = () => {
     </div>
   );
 };
+
