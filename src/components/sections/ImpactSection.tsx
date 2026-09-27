@@ -48,23 +48,13 @@ const StatItem: React.FC<StatItemProps> = ({ endValue, suffix, label }) => {
   );
 };
 
+import { useMemberCount } from '../../hooks/useMemberCount';
+
 export const ImpactSection = () => {
-  const [totalRegistered, setTotalRegistered] = useState<number | null>(null);
+  const { count, loading, error } = useMemberCount();
 
-  useEffect(() => {
-    fetch('https://theo-api-production.up.railway.app/api/v1/registrations/count')
-      .then(res => res.json())
-      .then(data => {
-        if (data && typeof data.count === 'number') {
-          setTotalRegistered(data.count);
-        }
-      })
-      .catch(err => console.error('Error fetching registration count:', err));
-  }, []);
-
-  // Real data pulled from recent initiatives, plus live registration count
+  // Real data pulled from recent initiatives
   const stats = [
-    { value: totalRegistered !== null ? totalRegistered : 0, suffix: '+', label: 'Registered Members' },
     { value: 56, suffix: '', label: 'Total Beneficiaries' },
     { value: 12, suffix: '', label: 'Vocational Trainees' },
     { value: 7, suffix: '', label: 'Entrepreneurs Assisted' },
@@ -84,12 +74,32 @@ export const ImpactSection = () => {
             When We Move Together, <br />
             <span className="text-gold">We Move Further.</span>
           </motion.h2>
-          <p className="text-lg text-dark/70">
+          <p className="text-lg text-dark/70 mb-8">
             Our collective efforts translate into real-world impact. Every connection made is a step towards our shared success.
           </p>
+          
+          {/* Member Count Display */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="inline-block bg-white px-8 py-4 rounded-full shadow-md border border-gold/20 mb-8"
+          >
+            {loading ? (
+              <div className="flex items-center justify-center gap-3">
+                <div className="w-5 h-5 border-2 border-gold border-t-transparent rounded-full animate-spin"></div>
+                <span className="text-navy font-bold text-lg md:text-xl">Loading community members...</span>
+              </div>
+            ) : (
+              <p className="text-navy font-black text-xl md:text-2xl">
+                Join <span className="text-gold">{error ? '0' : (count || 0).toLocaleString()}</span>+ community members!
+              </p>
+            )}
+          </motion.div>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 md:gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-6 md:gap-8">
           {stats.map((stat, index) => (
             <StatItem 
               key={index}
