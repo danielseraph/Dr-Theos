@@ -22,7 +22,11 @@ export const ContactForm = () => {
       });
 
       if (!response.ok) {
-        throw new Error('Failed to send message');
+        const errorData = await response.json();
+        if (errorData.errors && errorData.errors.length > 0) {
+          throw new Error(errorData.errors[0].message);
+        }
+        throw new Error(errorData.message || 'Failed to send message');
       }
 
       setStatus('success');
@@ -78,7 +82,7 @@ export const ContactForm = () => {
       </div>
       <div>
         <label className="block text-sm font-semibold text-navy mb-2">Message</label>
-        <textarea required name="message" rows={5} value={formData.message} onChange={handleChange} className={inputClasses} />
+        <textarea required minLength={10} name="message" rows={5} value={formData.message} onChange={handleChange} className={inputClasses} />
       </div>
       <Button type="submit" variant="primary" size="lg" className="w-full flex items-center justify-center gap-2" disabled={status === 'loading'}>
         {status === 'loading' ? 'SENDING...' : <>SEND MESSAGE <Send className="w-5 h-5" /></>}
