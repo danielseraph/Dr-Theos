@@ -1,275 +1,201 @@
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { useState } from 'react';
-import { Calendar, Tag, ArrowRight, Search, Clock } from 'lucide-react';
-import { Button } from '../components/common/Button';
+import { Calendar, ArrowRight, User } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
-const categories = [
-  'All',
-  'Programs',
-  'Scholarships',
-  'Graduations',
-  'Community Projects',
-  'Partnerships',
-  'Events',
-  'Founder Updates',
-  'Milestones',
-];
+const API_BASE_URL = 'https://theo-api-production.up.railway.app';
 
-const news = [
-  {
-    id: 1,
-    category: 'Scholarships',
-    featured: true,
-    title: '2026 Academic Scholarship Awards — 15 Students Supported This Cycle',
-    summary: 'Dr. Theo\'s Empowerment Hub is proud to announce the recipients of the 2026 Academic Scholarship cycle. Fifteen outstanding students from underserved communities across Cross River State have been selected to receive full tuition support, textbooks, and a monthly living stipend.',
-    date: 'September 15, 2026',
-    readTime: '4 min read',
-    image: '/our story.jpeg',
-    tags: ['Scholarships', 'Education', 'Beneficiaries'],
-  },
-  {
-    id: 2,
-    category: 'Graduations',
-    featured: false,
-    title: 'Tailoring & Garment Construction Cohort 3 — Graduation Ceremony',
-    summary: '22 participants successfully completed our intensive 6-month Tailoring & Garment Construction program. Each graduate received a starter kit including a modern sewing machine to launch their career.',
-    date: 'August 28, 2026',
-    readTime: '3 min read',
-    image: null,
-    tags: ['Vocational', 'Graduation', 'Training'],
-  },
-  {
-    id: 3,
-    category: 'Community Projects',
-    featured: false,
-    title: 'Borehole Completion in Kpakungu — 2,000 Residents Now Have Clean Water',
-    summary: 'Following months of planning and construction, the solar-powered borehole project in the Kpakungu community has been officially commissioned. Over 2,000 residents now have daily access to clean, safe drinking water.',
-    date: 'August 10, 2026',
-    readTime: '5 min read',
-    image: null,
-    tags: ['Community', 'Water', 'Infrastructure'],
-  },
-  {
-    id: 4,
-    category: 'Partnerships',
-    featured: false,
-    title: 'New Partnership Announced With Regional Technical College',
-    summary: 'We are excited to announce a formal skills-training partnership with a leading regional technical college. This collaboration will significantly expand the quality and range of our vocational programs.',
-    date: 'July 22, 2026',
-    readTime: '3 min read',
-    image: null,
-    tags: ['Partnership', 'Training', 'Education'],
-  },
-  {
-    id: 5,
-    category: 'Programs',
-    featured: false,
-    title: 'New Program Launch: Digital Skills & Entrepreneurship for Youth',
-    summary: 'We are launching a brand-new program combining digital literacy, social media marketing, and entrepreneurship training for youths aged 18–30. Applications are now open.',
-    date: 'July 5, 2026',
-    readTime: '4 min read',
-    image: null,
-    tags: ['Programs', 'Youth', 'Digital'],
-  },
-  {
-    id: 6,
-    category: 'Founder Updates',
-    featured: false,
-    title: 'Message From the Founder — Our Path Forward in 2026',
-    summary: 'Prince Engr. Dr. John Theophilus Okosigha shares a personal reflection on the Hub\'s journey so far, the milestones achieved, and his vision for the remainder of 2026 and beyond.',
-    date: 'June 30, 2026',
-    readTime: '6 min read',
-    image: '/Dr Theo.jpeg',
-    tags: ['Founder', 'Vision', 'Leadership'],
-  },
-  {
-    id: 7,
-    category: 'Milestones',
-    featured: false,
-    title: 'Dr. Theo\'s Empowerment Hub Reaches 250+ Beneficiaries Milestone',
-    summary: 'We are humbled and grateful to announce that we have now impacted over 250 individuals through our various programs — a milestone that reflects the generosity of our donors, partners, and dedicated team.',
-    date: 'June 15, 2026',
-    readTime: '3 min read',
-    image: null,
-    tags: ['Milestone', 'Impact', 'Growth'],
-  },
-  {
-    id: 8,
-    category: 'Events',
-    featured: false,
-    title: 'Empowerment Summit 2026 — Save the Date',
-    summary: 'Our annual Empowerment Summit returns in October 2026 with a lineup of expert speakers, panel discussions, networking sessions, and live performances. Registration is now open.',
-    date: 'June 1, 2026',
-    readTime: '2 min read',
-    image: null,
-    tags: ['Event', 'Summit', 'Networking'],
-  },
-];
+type Post = {
+  id: string;
+  title: string;
+  slug: string;
+  content: string;
+  category: string;
+  coverImageUrl: string | null;
+  publishedAt: string;
+  author: { firstName: string; lastName: string };
+};
 
 export const News = () => {
-  const [activeCategory, setActiveCategory] = useState('All');
-  const [searchQuery, setSearchQuery] = useState('');
+  const [posts, setPosts] = useState<Post[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [category, setCategory] = useState('');
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
 
-  const featured = news.find(n => n.featured);
-  const filtered = news.filter(n => !n.featured).filter(n => {
-    const matchCat = activeCategory === 'All' || n.category === activeCategory;
-    const matchSearch = n.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      n.summary.toLowerCase().includes(searchQuery.toLowerCase());
-    return matchCat && matchSearch;
-  });
+  const fetchPosts = async (cat: string, p: number, append: boolean = false) => {
+    try {
+      setLoading(true);
+      let url = `${API_BASE_URL}/api/posts?page=${p}&limit=9`;
+      if (cat) {
+        url += `&category=${cat}`;
+      }
+      const response = await fetch(url);
+      const data = await response.json();
+      if (data.success) {
+        setPosts(append ? [...posts, ...data.data] : data.data);
+        setTotalPages(data.pagination?.totalPages || 1);
+      } else {
+        if (!append) setPosts([]);
+      }
+    } catch (error) {
+      console.error('Error fetching posts:', error);
+      if (!append) setPosts([]);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchPosts(category, 1, false);
+    setPage(1);
+  }, [category]);
+
+  const loadMore = () => {
+    const nextPage = page + 1;
+    setPage(nextPage);
+    fetchPosts(category, nextPage, true);
+  };
+
+  const getCategoryBadgeStyle = (cat: string) => {
+    switch (cat) {
+      case 'NEWS': return 'bg-blue-100 text-blue-800 border-blue-200';
+      case 'IMPACT_STORY': return 'bg-green-100 text-green-800 border-green-200';
+      case 'PRESS_RELEASE': return 'bg-purple-100 text-purple-800 border-purple-200';
+      case 'COMMUNITY_UPDATE': return 'bg-yellow-100 text-yellow-800 border-yellow-200';
+      default: return 'bg-gold/10 text-gold border-gold/20';
+    }
+  };
+
+  const formatCategory = (cat: string) => cat.replace('_', ' ');
+
+  const filterButtons = [
+    { label: 'All', value: '' },
+    { label: 'News', value: 'NEWS' },
+    { label: 'Press Release', value: 'PRESS_RELEASE' },
+    { label: 'Impact Story', value: 'IMPACT_STORY' },
+    { label: 'Community Update', value: 'COMMUNITY_UPDATE' }
+  ];
 
   return (
     <div className="w-full pt-20">
-
-      {/* Hero */}
+      {/* Hero Section */}
       <section className="bg-navy text-white py-24 px-6 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[size:24px_24px]" />
         <div className="max-w-4xl mx-auto relative z-10 text-center">
-          <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
-            className="text-4xl md:text-6xl font-bold mb-6">
-            News & Updates
+          <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-4xl md:text-6xl font-bold mb-6">
+            News & Blog
           </motion.h1>
-          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
-            className="text-xl text-white/80 max-w-2xl mx-auto leading-relaxed">
-            Stay informed about our latest programs, community milestones, beneficiary stories, and organizational news.
+          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="text-xl text-white/80 max-w-2xl mx-auto leading-relaxed">
+            Stay updated with our latest impact stories, press releases, and community announcements.
           </motion.p>
         </div>
       </section>
 
-      {/* Featured Article */}
-      {featured && (
-        <section className="py-16 bg-white px-6">
-          <div className="max-w-6xl mx-auto">
-            <p className="text-xs font-bold tracking-widest uppercase text-gold mb-6">Featured Story</p>
-            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
-              className="rounded-3xl overflow-hidden border border-gray-100 shadow-lg flex flex-col lg:flex-row group">
-              <div className="lg:w-2/5 h-64 lg:h-auto overflow-hidden relative">
-                {featured.image ? (
-                  <img src={featured.image} alt={featured.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                ) : (
-                  <div className="w-full h-full bg-gradient-to-br from-navy to-navy/70 flex items-center justify-center">
-                    <Tag className="w-16 h-16 text-gold/40" />
-                  </div>
-                )}
-                <div className="absolute top-4 left-4">
-                  <span className="bg-gold text-navy text-xs font-bold px-3 py-1 rounded-full">{featured.category}</span>
-                </div>
-              </div>
-              <div className="lg:w-3/5 p-8 lg:p-12 flex flex-col justify-center">
-                <div className="flex items-center gap-4 text-dark/40 text-sm mb-4">
-                  <span className="flex items-center gap-1.5"><Calendar className="w-4 h-4" />{featured.date}</span>
-                  <span className="flex items-center gap-1.5"><Clock className="w-4 h-4" />{featured.readTime}</span>
-                </div>
-                <h2 className="text-2xl md:text-3xl font-bold text-navy mb-4 leading-snug">{featured.title}</h2>
-                <p className="text-dark/60 leading-relaxed mb-6">{featured.summary}</p>
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {featured.tags.map(tag => (
-                    <span key={tag} className="text-xs font-semibold bg-gold/10 text-gold px-3 py-1 rounded-full">{tag}</span>
-                  ))}
-                </div>
-                <Button variant="primary" size="sm" className="w-fit flex items-center gap-2">
-                  Read Full Story <ArrowRight className="w-4 h-4" />
-                </Button>
-              </div>
-            </motion.div>
-          </div>
-        </section>
-      )}
-
-      {/* Filters + Search */}
-      <section className="sticky top-20 z-40 bg-white border-b border-gray-100 shadow-sm py-4 px-6">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
-          <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-hide">
-            {categories.map(cat => (
-              <button key={cat} onClick={() => setActiveCategory(cat)}
-                className={`shrink-0 px-4 py-2 rounded-full text-sm font-semibold transition-colors border ${
-                  activeCategory === cat
-                    ? 'bg-gold text-navy border-gold'
-                    : 'bg-white text-dark/60 border-gray-200 hover:border-gold/50'
-                }`}>
-                {cat}
+      {/* Main Content */}
+      <section className="py-16 bg-offwhite px-6 min-h-screen">
+        <div className="max-w-7xl mx-auto">
+          
+          {/* Category Filter */}
+          <div className="flex flex-wrap items-center justify-center gap-3 mb-12">
+            {filterButtons.map((btn) => (
+              <button
+                key={btn.value}
+                onClick={() => setCategory(btn.value)}
+                className={`px-6 py-2 rounded-full text-sm font-semibold transition-all ${
+                  category === btn.value 
+                    ? 'bg-navy text-white shadow-md' 
+                    : 'bg-white text-navy border border-gray-200 hover:border-gold hover:text-gold'
+                }`}
+              >
+                {btn.label}
               </button>
             ))}
           </div>
-          <div className="relative w-full md:w-64 shrink-0">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-dark/30" />
-            <input
-              type="text"
-              placeholder="Search news..."
-              value={searchQuery}
-              onChange={e => setSearchQuery(e.target.value)}
-              className="w-full pl-9 pr-4 py-2 text-sm rounded-xl border border-gray-200 focus:border-gold outline-none"
-            />
-          </div>
-        </div>
-      </section>
 
-      {/* News Grid */}
-      <section className="py-16 bg-offwhite px-6 min-h-96">
-        <div className="max-w-6xl mx-auto">
-          {filtered.length === 0 ? (
-            <div className="text-center py-20">
-              <p className="text-dark/40 text-lg">No articles found matching your criteria.</p>
-            </div>
-          ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filtered.map((article, i) => (
-                <motion.article key={article.id}
-                  initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }} transition={{ delay: (i % 3) * 0.08 }}
-                  className="bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg hover:border-gold/30 transition-all overflow-hidden group flex flex-col">
-                  <div className="h-44 overflow-hidden relative">
-                    {article.image ? (
-                      <img src={article.image} alt={article.title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                    ) : (
-                      <div className="w-full h-full bg-gradient-to-br from-navy/90 to-navy/60 flex items-center justify-center">
-                        <Tag className="w-10 h-10 text-gold/40" />
-                      </div>
-                    )}
-                    <div className="absolute top-3 left-3">
-                      <span className="bg-gold text-navy text-xs font-bold px-3 py-1 rounded-full">{article.category}</span>
+          {/* Posts Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {loading && posts.length === 0 ? (
+              Array.from({ length: 6 }).map((_, i) => (
+                <div key={i} className="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 animate-pulse">
+                  <div className="w-full h-48 bg-gray-200"></div>
+                  <div className="p-6 space-y-4">
+                    <div className="w-24 h-6 bg-gray-200 rounded-full"></div>
+                    <div className="w-full h-8 bg-gray-200 rounded"></div>
+                    <div className="w-3/4 h-8 bg-gray-200 rounded"></div>
+                    <div className="w-full h-4 bg-gray-200 rounded mt-4"></div>
+                    <div className="w-5/6 h-4 bg-gray-200 rounded"></div>
+                  </div>
+                </div>
+              ))
+            ) : posts.length > 0 ? (
+              posts.map((post) => (
+                <div key={post.id} className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 group flex flex-col">
+                  <div className="relative h-56 overflow-hidden bg-gray-100">
+                    <img 
+                      src={post.coverImageUrl || '/placeholder.jpg'} 
+                      alt={post.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                      onError={(e) => { e.currentTarget.src = '/placeholder.jpg' }}
+                    />
+                    <div className={`absolute top-4 left-4 px-3 py-1 text-xs font-bold uppercase rounded-full border ${getCategoryBadgeStyle(post.category)}`}>
+                      {formatCategory(post.category)}
                     </div>
                   </div>
+                  
                   <div className="p-6 flex flex-col flex-grow">
-                    <div className="flex items-center gap-3 text-dark/40 text-xs mb-3">
-                      <span className="flex items-center gap-1"><Calendar className="w-3.5 h-3.5" />{article.date}</span>
-                      <span className="flex items-center gap-1"><Clock className="w-3.5 h-3.5" />{article.readTime}</span>
+                    <div className="flex items-center gap-4 text-sm text-dark/50 mb-4 font-medium">
+                      <span className="flex items-center gap-1">
+                        <Calendar className="w-4 h-4" />
+                        {new Date(post.publishedAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+                      </span>
+                      <span className="flex items-center gap-1">
+                        <User className="w-4 h-4" />
+                        {post.author?.firstName} {post.author?.lastName}
+                      </span>
                     </div>
-                    <h3 className="font-bold text-navy leading-snug mb-3 group-hover:text-gold transition-colors">{article.title}</h3>
-                    <p className="text-dark/60 text-sm leading-relaxed line-clamp-3 flex-grow">{article.summary}</p>
-                    <div className="mt-4 pt-4 border-t border-gray-100 flex items-center justify-between">
-                      <div className="flex flex-wrap gap-1">
-                        {article.tags.slice(0, 2).map(tag => (
-                          <span key={tag} className="text-xs bg-gold/10 text-gold px-2 py-0.5 rounded-full font-medium">{tag}</span>
-                        ))}
-                      </div>
-                      <button className="text-xs font-bold text-gold flex items-center gap-1 hover:gap-2 transition-all">
-                        Read more <ArrowRight className="w-3.5 h-3.5" />
-                      </button>
+
+                    <h3 className="text-xl font-bold text-navy mb-3 line-clamp-2 leading-tight group-hover:text-gold transition-colors">
+                      {post.title}
+                    </h3>
+
+                    <div className="text-dark/70 line-clamp-3 mb-6 text-sm"
+                         dangerouslySetInnerHTML={{ __html: post.content.substring(0, 150) + '...' }}
+                    />
+
+                    <div className="mt-auto pt-4 border-t border-gray-100">
+                      <Link to={`/news/${post.slug}`} className="inline-flex items-center gap-2 text-gold font-bold hover:text-navy transition-colors text-sm uppercase tracking-wider">
+                        Read More <ArrowRight className="w-4 h-4" />
+                      </Link>
                     </div>
                   </div>
-                </motion.article>
-              ))}
+                </div>
+              ))
+            ) : (
+              <div className="col-span-full py-20 text-center">
+                <div className="text-gray-400 mb-4">
+                  <Calendar className="w-16 h-16 mx-auto opacity-50" />
+                </div>
+                <h3 className="text-2xl font-bold text-navy mb-2">No posts found</h3>
+                <p className="text-dark/60">No posts match this category yet. Check back soon!</p>
+              </div>
+            )}
+          </div>
+
+          {page < totalPages && (
+            <div className="mt-16 text-center">
+              <button 
+                onClick={loadMore}
+                disabled={loading}
+                className="inline-flex items-center justify-center px-8 py-3 font-bold text-white bg-navy hover:bg-gold rounded-full transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {loading ? 'LOADING...' : 'LOAD MORE POSTS'}
+              </button>
             </div>
           )}
+
         </div>
       </section>
-
-      {/* Subscribe CTA */}
-      <section className="py-20 bg-navy text-white px-6">
-        <div className="max-w-2xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-4">Stay Updated</h2>
-          <p className="text-white/70 mb-8 leading-relaxed">Subscribe to receive our latest news, program announcements, and impact reports directly in your inbox.</p>
-          <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-            <input type="email" placeholder="Your email address"
-              className="flex-1 px-5 py-3 rounded-xl text-dark text-sm outline-none focus:ring-2 focus:ring-gold" />
-            <Button variant="primary" className="shrink-0">Subscribe</Button>
-          </div>
-        </div>
-      </section>
-
     </div>
   );
 };

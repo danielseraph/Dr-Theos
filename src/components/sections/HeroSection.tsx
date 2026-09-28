@@ -110,7 +110,7 @@ export const HeroSection = () => {
                 times: [0, 0.15, 0.85, 1],
                 ease: "easeInOut" 
               }}
-              className="text-lg md:text-2xl text-white/80 text-balance leading-relaxed max-w-3xl mx-auto"
+              className="text-base sm:text-lg md:text-2xl text-white/80 text-balance leading-relaxed max-w-3xl mx-auto"
             >
               We are dedicated to building a brighter future by providing the resources, education, and support necessary for individuals and communities to thrive and achieve meaningful progress.
             </motion.p>

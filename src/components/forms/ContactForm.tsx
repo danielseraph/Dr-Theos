@@ -4,12 +4,33 @@ import { Send } from 'lucide-react';
 
 export const ContactForm = () => {
   const [formData, setFormData] = useState({ fullName: '', email: '', phone: '', subject: '', message: '' });
-  const [status, setStatus] = useState<'idle' | 'loading' | 'success'>('idle');
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('loading');
-    setTimeout(() => setStatus('success'), 1500);
+    setErrorMessage('');
+    
+    try {
+      const response = await fetch('https://theo-api-production.up.railway.app/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to send message');
+      }
+
+      setStatus('success');
+      setFormData({ fullName: '', email: '', phone: '', subject: '', message: '' });
+    } catch (err: any) {
+      setStatus('error');
+      setErrorMessage(err.message || 'Something went wrong. Please try again.');
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -32,6 +53,11 @@ export const ContactForm = () => {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
+      {status === 'error' && (
+        <div className="bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded-lg text-sm">
+          {errorMessage}
+        </div>
+      )}
       <div>
         <label className="block text-sm font-semibold text-navy mb-2">Full Name</label>
         <input required type="text" name="fullName" value={formData.fullName} onChange={handleChange} className={inputClasses} />

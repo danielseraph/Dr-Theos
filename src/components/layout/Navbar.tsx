@@ -12,8 +12,7 @@ const navLinks = [
     path: '/about',
     dropdown: [
       { name: 'Our Mission', path: '/about/mission' },
-      { name: 'Vision', path: '/about/vision' },
-      { name: 'Objective', path: '/about/objective' },
+      { name: 'Vision & Objectives', path: '/about/vision' },
       { name: 'Founder', path: '/about/founder' },
       { name: 'Leadership', path: '/about/leadership' },
       { name: 'Policies', path: '/about/policies' },
