@@ -7,9 +7,7 @@ const photoCategories = ['All', 'Training', 'Beneficiaries', 'Community Projects
 const photos = [
   { id: 1, category: 'Beneficiaries', src: '/beneficiaryimage1.jpeg', alt: 'Beneficiary portrait' },
   { id: 2, category: 'Training', src: '/beneficiaryimage2.jpeg', alt: 'Skills acquisition session' },
-  { id: 3, category: 'Beneficiaries', src: '/beneficiaryimage3.jpeg', alt: 'Empowerment program graduate' },
   { id: 4, category: 'Outreach', src: '/beneficiaryimage4.jpeg', alt: 'Community outreach participant' },
-  { id: 5, category: 'Beneficiaries', src: '/beneficiaryimage5.jpeg', alt: 'Scholarship recipient' },
   { id: 6, category: 'Training', src: '/beneficiaryimage6.jpeg', alt: 'Vocational training workshop' },
   { id: 7, category: 'Beneficiaries', src: '/beneficiaryimage7.jpeg', alt: 'A proud beneficiary' },
   { id: 8, category: 'Donations', src: '/beneficiaryimage8.jpeg', alt: 'Receiving empowerment tools' },
