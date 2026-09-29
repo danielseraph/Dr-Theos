@@ -25,6 +25,8 @@ import { Volunteer } from '../pages/Volunteer';
 import { Partner } from '../pages/Partner';
 import { News } from '../pages/News';
 import { SingleNews } from '../pages/SingleNews';
+import { Events } from '../pages/Events';
+import { EventDetailPage } from '../pages/EventDetailPage';
 import { Gallery } from '../pages/Gallery';
 import { Resources } from '../pages/Resources';
 import { FAQ } from '../pages/FAQ';
@@ -64,6 +66,8 @@ export const router = createBrowserRouter([
       { path: 'partner', element: <Partner /> },
       { path: 'get-involved/partner', element: <Partner /> },
       { path: 'community', element: <Placeholder title="Community" /> },
+      { path: 'events', element: <Events /> },
+      { path: 'events/:slug', element: <EventDetailPage /> },
       { path: 'news', element: <News /> },
       { path: 'news/:slug', element: <SingleNews /> },
       { path: 'gallery', element: <Gallery /> },

@@ -1,291 +1,230 @@
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { useState } from 'react';
-import { Calendar, Clock, MapPin, Users, ArrowRight, Filter } from 'lucide-react';
-import { Button } from '../components/common/Button';
+import { Filter, Calendar, Sparkles } from 'lucide-react';
+import { EventCard } from '../components/events/EventCard';
+import { getEvents } from '../utils/eventsApi';
+import type { Event, EventStatus, EventType } from '../types/events';
 
-const eventTypes = ['All', 'Training', 'Workshop', 'Community Outreach', 'Fundraising', 'Webinar', 'Conference', 'Ceremony'];
-
-const events = [
-  {
-    id: 1,
-    type: 'Conference',
-    status: 'upcoming',
-    title: 'Empowerment Summit 2026',
-    description: 'Our flagship annual summit bringing together beneficiaries, donors, partners, community leaders, and experts for a day of inspiration, panel discussions, and strategic networking. This year\'s theme: "Roots to Results — Measuring Real Impact."',
-    date: 'October 18, 2026',
-    time: '9:00 AM – 5:00 PM WAT',
-    location: 'Calabar International Conference Centre, Cross River State',
-    seats: 'Limited seats — 200 available',
-    free: false,
-    fee: '₦5,000 (subsidized for beneficiaries)',
-  },
-  {
-    id: 2,
-    type: 'Training',
-    status: 'upcoming',
-    title: 'Digital Skills & Social Media Marketing Bootcamp — Cohort 1',
-    description: 'A 4-week intensive bootcamp covering smartphone content creation, social media management, basic graphic design, and online income generation for young people aged 18–30.',
-    date: 'October 6 – November 1, 2026',
-    time: 'Tuesdays & Thursdays, 10:00 AM – 1:00 PM',
-    location: 'Dr. Theo\'s Hub Training Centre, Calabar',
-    seats: '30 participants',
-    free: true,
-    fee: 'Free (application required)',
-  },
-  {
-    id: 3,
-    type: 'Webinar',
-    status: 'upcoming',
-    title: 'From Idea to Business — Entrepreneurship Webinar for Beginners',
-    description: 'A free online webinar for aspiring entrepreneurs who want to turn their ideas into sustainable businesses. Facilitated by our Entrepreneurship Program Director with guest speakers from the local business community.',
-    date: 'September 28, 2026',
-    time: '3:00 PM – 5:00 PM WAT',
-    location: 'Online (Zoom) — Link sent upon registration',
-    seats: 'Unlimited',
-    free: true,
-    fee: 'Free',
-  },
-  {
-    id: 4,
-    type: 'Ceremony',
-    status: 'upcoming',
-    title: 'Scholarship Award Ceremony — 2026 Cohort',
-    description: 'A formal ceremony to officially present the 2026 scholarship awards to our 15 selected beneficiaries. Families, sponsors, board members, and media are warmly invited to celebrate this milestone.',
-    date: 'October 2, 2026',
-    time: '11:00 AM – 2:00 PM WAT',
-    location: 'Dr. Theo\'s Empowerment Hub, Calabar',
-    seats: 'Invitation-based + Open to public',
-    free: true,
-    fee: 'Free entry',
-  },
-  {
-    id: 5,
-    type: 'Community Outreach',
-    status: 'upcoming',
-    title: 'Free Health Screening & Community Outreach Day',
-    description: 'In partnership with local healthcare volunteers, we are hosting a free community outreach day offering basic health checks, nutritional advice, and information on our empowerment programs.',
-    date: 'October 11, 2026',
-    time: '8:00 AM – 3:00 PM',
-    location: 'Kpakungu Community Square, Cross River State',
-    seats: 'Open to all community members',
-    free: true,
-    fee: 'Free',
-  },
-  {
-    id: 6,
-    type: 'Fundraising',
-    status: 'upcoming',
-    title: 'Annual Charity Gala Dinner — "Building Futures Together"',
-    description: 'An elegant evening of celebration, storytelling, and fundraising. Guests will hear directly from our beneficiaries, enjoy live entertainment, and have the opportunity to sponsor a student, a vocational seat, or a community project.',
-    date: 'November 8, 2026',
-    time: '6:00 PM – 10:00 PM',
-    location: 'Metropolitan Club, Calabar',
-    seats: 'Table bookings available (10 per table)',
-    free: false,
-    fee: '₦50,000/seat | ₦450,000/table',
-  },
-  {
-    id: 7,
-    type: 'Workshop',
-    status: 'upcoming',
-    title: 'Women in Business — Leadership & Financial Literacy Workshop',
-    description: 'A practical one-day workshop for women entrepreneurs and aspiring businesswomen covering financial planning, pricing strategies, record keeping, and accessing capital.',
-    date: 'October 25, 2026',
-    time: '9:00 AM – 4:00 PM',
-    location: 'Dr. Theo\'s Hub Training Centre, Calabar',
-    seats: '40 participants',
-    free: true,
-    fee: 'Free (registration required)',
-  },
-  {
-    id: 8,
-    type: 'Training',
-    status: 'past',
-    title: 'Tailoring & Garment Construction — Cohort 3 (Completed)',
-    description: 'Our third cohort of the Tailoring & Garment Construction program successfully completed their 6-month course. 22 graduates received starter kits and certificates.',
-    date: 'March – August 2026',
-    time: 'Weekdays, 9:00 AM – 12:00 PM',
-    location: 'Dr. Theo\'s Hub Training Centre, Calabar',
-    seats: '22 participants (Completed)',
-    free: true,
-    fee: 'Free',
-  },
+const categoryFilters: { label: string; value: EventType }[] = [
+  { label: 'All Categories', value: 'ALL' },
+  { label: 'Trainings', value: 'TRAINING' },
+  { label: 'Workshops', value: 'WORKSHOP' },
+  { label: 'Conferences', value: 'CONFERENCE' },
+  { label: 'Outreach', value: 'COMMUNITY_OUTREACH' },
+  { label: 'Webinars', value: 'WEBINAR' },
 ];
 
-const typeColors: Record<string, string> = {
-  'Training': 'bg-navy/10 text-navy',
-  'Workshop': 'bg-gold/10 text-gold',
-  'Community Outreach': 'bg-gold/20 text-gold',
-  'Fundraising': 'bg-navy/10 text-navy',
-  'Webinar': 'bg-gold/10 text-gold',
-  'Conference': 'bg-navy/10 text-navy',
-  'Ceremony': 'bg-gold/20 text-gold',
-};
+export const Events: React.FC = () => {
+  const [statusTab, setStatusTab] = useState<EventStatus>('UPCOMING');
+  const [selectedType, setSelectedType] = useState<EventType>('ALL');
+  const [events, setEvents] = useState<Event[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [page, setPage] = useState<number>(1);
+  const [totalPages, setTotalPages] = useState<number>(1);
+  const [totalCount, setTotalCount] = useState<number>(0);
 
-export const Events = () => {
-  const [activeType, setActiveType] = useState('All');
-  const [showPast, setShowPast] = useState(false);
+  const fetchEventsData = async (
+    targetPage: number = 1,
+    append: boolean = false,
+    currentStatus = statusTab,
+    currentType = selectedType
+  ) => {
+    try {
+      setLoading(true);
+      const res = await getEvents({
+        page: targetPage,
+        limit: 9,
+        status: currentStatus,
+        type: currentType,
+      });
 
-  const filtered = events.filter(e => {
-    const matchType = activeType === 'All' || e.type === activeType;
-    const matchStatus = showPast ? true : e.status === 'upcoming';
-    return matchType && matchStatus;
-  });
+      if (res.success) {
+        setEvents((prev) => (append ? [...prev, ...res.data] : res.data));
+        setTotalPages(res.pagination?.totalPages || 1);
+        setTotalCount(res.pagination?.total || res.data.length);
+      } else {
+        if (!append) setEvents([]);
+      }
+    } catch (err) {
+      console.error('Failed to load events:', err);
+      if (!append) setEvents([]);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-  const upcoming = filtered.filter(e => e.status === 'upcoming');
-  const past = filtered.filter(e => e.status === 'past');
+  // Refetch when status tab or category filter changes
+  useEffect(() => {
+    setPage(1);
+    fetchEventsData(1, false, statusTab, selectedType);
+  }, [statusTab, selectedType]);
+
+  const handleLoadMore = () => {
+    const nextPage = page + 1;
+    setPage(nextPage);
+    fetchEventsData(nextPage, true, statusTab, selectedType);
+  };
 
   return (
-    <div className="w-full pt-20">
+    <div className="w-full pt-20 bg-offwhite min-h-screen">
+      {/* Hero Banner */}
+      <section className="bg-navy text-white py-20 md:py-24 px-6 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.15)_1px,transparent_1px)] bg-[size:24px_24px]" />
+        <div className="absolute top-1/4 right-10 w-96 h-96 bg-gold/10 rounded-full blur-[140px] pointer-events-none" />
 
-      {/* Hero */}
-      <section className="bg-navy text-white py-24 px-6 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[size:24px_24px]" />
-        <div className="absolute top-1/4 right-10 w-80 h-80 bg-gold/10 rounded-full blur-[120px] pointer-events-none" />
         <div className="max-w-4xl mx-auto relative z-10 text-center">
-          <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
-            className="text-4xl md:text-6xl font-bold mb-6">
-            Events & Programs
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold/20 border border-gold/40 text-gold text-xs font-bold uppercase tracking-wider mb-4"
+          >
+            <Sparkles className="w-3.5 h-3.5" /> Empowering Communities
+          </motion.div>
+
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-4xl md:text-6xl font-black mb-6 tracking-tight"
+          >
+            Events & Community Programs
           </motion.h1>
-          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
-            className="text-xl text-white/80 max-w-2xl mx-auto leading-relaxed">
-            Join us at our upcoming trainings, workshops, outreach programs, and community events. There is always something happening at the Hub.
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto leading-relaxed"
+          >
+            Discover our upcoming vocational trainings, educational masterclasses, summits, and
+            community outreaches. Reserve your spot today!
           </motion.p>
         </div>
       </section>
 
-      {/* Filter Bar */}
+      {/* Filter and Tab Section */}
       <section className="sticky top-20 z-40 bg-white border-b border-gray-100 shadow-sm py-4 px-6">
-        <div className="max-w-6xl mx-auto flex flex-col sm:flex-row gap-3 items-start sm:items-center justify-between">
-          <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-hide">
-            <Filter className="w-4 h-4 text-dark/30 shrink-0" />
-            {eventTypes.map(type => (
-              <button key={type} onClick={() => setActiveType(type)}
-                className={`shrink-0 px-4 py-2 rounded-full text-sm font-semibold transition-colors border ${
-                  activeType === type
-                    ? 'bg-gold text-navy border-gold'
-                    : 'bg-white text-dark/60 border-gray-200 hover:border-gold/50'
-                }`}>
-                {type}
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+          {/* Status Segmented Control (Upcoming vs Past) */}
+          <div className="flex items-center bg-gray-100/90 p-1 rounded-full border border-gray-200">
+            <button
+              onClick={() => setStatusTab('UPCOMING')}
+              className={`px-5 py-2 rounded-full text-xs sm:text-sm font-bold transition-all ${
+                statusTab === 'UPCOMING'
+                  ? 'bg-navy text-white shadow-sm'
+                  : 'text-dark/60 hover:text-navy'
+              }`}
+            >
+              Upcoming Events
+            </button>
+            <button
+              onClick={() => setStatusTab('PAST')}
+              className={`px-5 py-2 rounded-full text-xs sm:text-sm font-bold transition-all ${
+                statusTab === 'PAST'
+                  ? 'bg-navy text-white shadow-sm'
+                  : 'text-dark/60 hover:text-navy'
+              }`}
+            >
+              Past Events
+            </button>
+          </div>
+
+          {/* Category Filter Pills */}
+          <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-hide max-w-full">
+            <Filter className="w-4 h-4 text-dark/30 shrink-0 ml-1" />
+            {categoryFilters.map((cat) => (
+              <button
+                key={cat.value}
+                onClick={() => setSelectedType(cat.value)}
+                className={`shrink-0 px-4 py-1.5 rounded-full text-xs font-bold transition-all border ${
+                  selectedType === cat.value
+                    ? 'bg-gold text-navy border-gold shadow-sm'
+                    : 'bg-white text-dark/65 border-gray-200 hover:border-gold/50 hover:text-navy'
+                }`}
+              >
+                {cat.label}
               </button>
             ))}
           </div>
-          <button onClick={() => setShowPast(!showPast)}
-            className={`shrink-0 text-sm font-semibold px-4 py-2 rounded-full border transition-colors ${
-              showPast ? 'bg-navy text-white border-navy' : 'border-gray-200 text-dark/50 hover:border-navy'
-            }`}>
-            {showPast ? 'Showing All' : 'Show Past Events'}
-          </button>
         </div>
       </section>
 
-      {/* Events List */}
-      <section className="py-16 bg-offwhite px-6 min-h-96">
-        <div className="max-w-6xl mx-auto space-y-16">
+      {/* Main Events Grid */}
+      <section className="max-w-7xl mx-auto px-6 py-16">
+        {/* Header subtitle */}
+        <div className="flex items-center justify-between mb-8 pb-4 border-b border-gray-200">
+          <h2 className="text-xl sm:text-2xl font-black text-navy flex items-center gap-2">
+            <span>{statusTab === 'UPCOMING' ? 'Upcoming Schedule' : 'Past Archive'}</span>
+            <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-navy/10 text-navy">
+              {totalCount} {totalCount === 1 ? 'Event' : 'Events'}
+            </span>
+          </h2>
+        </div>
 
-          {/* Upcoming */}
-          {upcoming.length > 0 && (
-            <div>
-              <h2 className="text-2xl font-bold text-navy mb-8 flex items-center gap-3">
-                <span className="w-3 h-3 rounded-full bg-gold animate-pulse inline-block"></span>
-                Upcoming Events
-              </h2>
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                {upcoming.map((event, i) => (
-                  <motion.div key={event.id}
-                    initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }} transition={{ delay: (i % 2) * 0.1 }}
-                    className="bg-white rounded-3xl border border-gray-100 shadow-sm hover:shadow-lg hover:border-gold/30 transition-all overflow-hidden flex flex-col">
-
-                    {/* Card top strip */}
-                    <div className="bg-navy px-6 py-4 flex items-center justify-between">
-                      <div className="flex items-center gap-2 text-white/80 text-sm">
-                        <Calendar className="w-4 h-4 text-gold" />
-                        <span className="font-semibold">{event.date}</span>
-                      </div>
-                      <span className={`text-xs font-bold px-3 py-1 rounded-full ${typeColors[event.type] || 'bg-gold/10 text-gold'}`}>
-                        {event.type}
-                      </span>
-                    </div>
-
-                    <div className="p-6 flex flex-col flex-grow">
-                      <h3 className="text-xl font-bold text-navy mb-3 leading-snug">{event.title}</h3>
-                      <p className="text-dark/60 text-sm leading-relaxed mb-5 flex-grow">{event.description}</p>
-
-                      <div className="space-y-2 mb-5">
-                        <div className="flex items-start gap-2 text-sm text-dark/70">
-                          <Clock className="w-4 h-4 text-gold shrink-0 mt-0.5" />
-                          <span>{event.time}</span>
-                        </div>
-                        <div className="flex items-start gap-2 text-sm text-dark/70">
-                          <MapPin className="w-4 h-4 text-gold shrink-0 mt-0.5" />
-                          <span>{event.location}</span>
-                        </div>
-                        <div className="flex items-start gap-2 text-sm text-dark/70">
-                          <Users className="w-4 h-4 text-gold shrink-0 mt-0.5" />
-                          <span>{event.seats}</span>
-                        </div>
-                      </div>
-
-                      <div className="flex items-center justify-between pt-4 border-t border-gray-100">
-                        <span className={`text-sm font-bold ${event.free ? 'text-gold' : 'text-navy'}`}>
-                          {event.fee}
-                        </span>
-                        <Button variant="primary" size="sm" className="flex items-center gap-2">
-                          Register <ArrowRight className="w-4 h-4" />
-                        </Button>
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
+        {/* Loading Skeletons */}
+        {loading && events.length === 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {Array.from({ length: 6 }).map((_, idx) => (
+              <div
+                key={idx}
+                className="bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm animate-pulse flex flex-col h-96"
+              >
+                <div className="h-52 bg-gray-200 w-full" />
+                <div className="p-6 space-y-4 flex-grow">
+                  <div className="w-24 h-4 bg-gray-200 rounded-full" />
+                  <div className="w-full h-6 bg-gray-200 rounded" />
+                  <div className="w-3/4 h-4 bg-gray-200 rounded" />
+                  <div className="pt-4 border-t border-gray-100 space-y-2">
+                    <div className="w-1/2 h-3 bg-gray-200 rounded" />
+                    <div className="w-2/3 h-3 bg-gray-200 rounded" />
+                  </div>
+                </div>
               </div>
+            ))}
+          </div>
+        ) : events.length > 0 ? (
+          <>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {events.map((event, index) => (
+                <EventCard key={event.id || index} event={event} index={index} />
+              ))}
             </div>
-          )}
 
-          {/* Past Events */}
-          {showPast && past.length > 0 && (
-            <div>
-              <h2 className="text-2xl font-bold text-dark/40 mb-8">Past Events</h2>
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                {past.map((event, i) => (
-                  <motion.div key={event.id}
-                    initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }} transition={{ delay: (i % 2) * 0.1 }}
-                    className="bg-white/60 rounded-3xl border border-gray-100 overflow-hidden flex flex-col opacity-70">
-                    <div className="bg-dark/10 px-6 py-4 flex items-center justify-between">
-                      <div className="flex items-center gap-2 text-dark/50 text-sm">
-                        <Calendar className="w-4 h-4" />
-                        <span className="font-semibold">{event.date}</span>
-                      </div>
-                      <span className="text-xs font-bold bg-dark/10 text-dark/50 px-3 py-1 rounded-full">{event.type}</span>
-                    </div>
-                    <div className="p-6">
-                      <h3 className="text-lg font-bold text-dark/60 mb-2">{event.title}</h3>
-                      <p className="text-dark/40 text-sm leading-relaxed">{event.description}</p>
-                    </div>
-                  </motion.div>
-                ))}
+            {/* Load More Pagination */}
+            {page < totalPages && (
+              <div className="mt-16 text-center">
+                <button
+                  onClick={handleLoadMore}
+                  disabled={loading}
+                  className="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-navy text-white text-sm font-bold hover:bg-gold hover:text-navy transition-all shadow-md hover:shadow-lg disabled:opacity-50"
+                >
+                  {loading ? 'Loading More Events...' : 'Load More Events'}
+                </button>
               </div>
+            )}
+          </>
+        ) : (
+          /* Empty State */
+          <div className="bg-white rounded-3xl border border-gray-100 p-16 text-center shadow-sm max-w-lg mx-auto">
+            <div className="w-16 h-16 bg-navy/5 text-navy rounded-full flex items-center justify-center mx-auto mb-4">
+              <Calendar className="w-8 h-8 text-gold" />
             </div>
-          )}
-
-          {filtered.length === 0 && (
-            <div className="text-center py-20">
-              <p className="text-dark/40 text-lg">No events found for the selected filter.</p>
-            </div>
-          )}
-        </div>
+            <h3 className="text-2xl font-bold text-navy mb-2">No Events Found</h3>
+            <p className="text-sm text-dark/60 leading-relaxed mb-6">
+              There are currently no {statusTab.toLowerCase()} events matching the selected category.
+              Please check back soon or try selecting a different category filter.
+            </p>
+            <button
+              onClick={() => {
+                setSelectedType('ALL');
+                setStatusTab('UPCOMING');
+              }}
+              className="inline-block px-6 py-2.5 rounded-full bg-navy text-white text-xs font-bold hover:bg-gold hover:text-navy transition-colors"
+            >
+              Reset Filters
+            </button>
+          </div>
+        )}
       </section>
-
-      {/* Submit an event CTA */}
-      <section className="py-20 bg-navy text-white px-6">
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-4">Want to Host an Event With Us?</h2>
-          <p className="text-white/70 mb-8 leading-relaxed">Community leaders, organizations, and volunteers are welcome to propose events that align with our mission. Get in touch with our team to discuss collaboration.</p>
-          <Button variant="primary" size="lg">Contact Our Team</Button>
-        </div>
-      </section>
-
     </div>
   );
 };
