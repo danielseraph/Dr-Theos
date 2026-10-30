@@ -75,7 +75,7 @@ export const ProgramDetail = () => {
             </div>
             <div>
               <div className={`inline-block text-xs font-bold uppercase tracking-widest mb-3 px-3 py-1 rounded-full ${c.badge}`}>
-                Dr. Theo's Empowerment Hub
+                Dr. Theo's Empowerment Foundation
               </div>
               <h1 className="text-3xl md:text-5xl font-bold mb-3 text-white leading-tight">{program.title}</h1>
               <p className={`text-lg font-semibold ${c.text} mb-4`}>{program.subtitle}</p>

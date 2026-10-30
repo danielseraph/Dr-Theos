@@ -11,7 +11,7 @@ const faqs = [
   },
   {
     question: 'Where do you operate?',
-    answer: 'Dr. Theo\'s Empowerment Hub is currently headquartered and operates primarily within Bayelsa State, Nigeria. We focus on both urban centers and surrounding rural communities where empowerment initiatives are most needed.'
+    answer: 'Dr. Theo\'s Empowerment Foundation is currently headquartered and operates primarily within Bayelsa State, Nigeria. We focus on both urban centers and surrounding rural communities where empowerment initiatives are most needed.'
   },
   {
     question: 'How can I apply for assistance?',

@@ -44,7 +44,7 @@ export const Donate = () => {
             <div>
               <h2 className="text-3xl font-bold text-navy mb-6">Why Donate?</h2>
               <p className="text-dark/70 leading-relaxed mb-6">
-                Dr. Theo's Empowerment Hub relies on the generosity of individuals and organizations to keep our programs completely free for beneficiaries. Every donation, regardless of size, creates a ripple effect of positive change.
+                Dr. Theo's Empowerment Foundation relies on the generosity of individuals and organizations to keep our programs completely free for beneficiaries. Every donation, regardless of size, creates a ripple effect of positive change.
               </p>
             </div>
 
@@ -88,7 +88,7 @@ export const Donate = () => {
                   </div>
                 </li>
               </ul>
-              <p className="text-xs text-dark/40 mt-4 italic">* A small percentage is allocated to essential administrative costs to keep the Hub operational.</p>
+              <p className="text-xs text-dark/40 mt-4 italic">* A small percentage is allocated to essential administrative costs to keep the Foundation operational.</p>
             </div>
           </div>
 
@@ -203,7 +203,7 @@ export const Donate = () => {
                         <span>Bank Name:</span> <span className="font-bold">Guaranty Trust Bank (GTB)</span>
                       </div>
                       <div className="flex justify-between border-b border-gold/10 py-2">
-                        <span>Account Name:</span> <span className="font-bold">Dr Theos Empowerment Hub</span>
+                        <span>Account Name:</span> <span className="font-bold">Dr Theos Empowerment Foundation</span>
                       </div>
                       <div className="flex justify-between pt-2">
                         <span>Account Number:</span> <span className="font-bold text-lg">0123456789</span>

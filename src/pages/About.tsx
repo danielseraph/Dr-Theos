@@ -54,7 +54,7 @@ export const About = () => {
             <div className="bg-offwhite p-6 rounded-2xl border border-gray-100 flex flex-col items-center text-center hover:shadow-md transition-shadow">
               <Building className="w-10 h-10 text-gold mb-4" />
               <h3 className="font-bold text-navy mb-2">Organization</h3>
-              <p className="text-dark/70 text-sm font-medium">Dr. Theo's Empowerment Hub</p>
+              <p className="text-dark/70 text-sm font-medium">Dr. Theo's Empowerment Foundation</p>
             </div>
             <div className="bg-offwhite p-6 rounded-2xl border border-gray-100 flex flex-col items-center text-center hover:shadow-md transition-shadow">
               <Shield className="w-10 h-10 text-gold mb-4" />
@@ -95,7 +95,7 @@ export const About = () => {
                 </div>
                 <div>
                   <h4 className="font-bold text-navy text-xl mb-2 flex items-center gap-2"><Lightbulb className="w-5 h-5 text-gold" /> What Inspired Us</h4>
-                  <p>Witnessing the resilience of individuals striving for better futures inspired the creation of Dr. Theo's Empowerment Hub. We realized that by providing the right tools, knowledge, and community backing, we could turn aspirations into tangible realities.</p>
+                  <p>Witnessing the resilience of individuals striving for better futures inspired the creation of Dr. Theo's Empowerment Foundation. We realized that by providing the right tools, knowledge, and community backing, we could turn aspirations into tangible realities.</p>
                 </div>
                 <div>
                   <h4 className="font-bold text-navy text-xl mb-2 flex items-center gap-2"><Activity className="w-5 h-5 text-gold" /> Our Evolution</h4>

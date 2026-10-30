@@ -9,7 +9,7 @@ export const Footer = () => {
           {/* Brand */}
           <div className="col-span-1 md:col-span-1">
             <Link to="/" className="inline-block mb-6 transition-opacity hover:opacity-80">
-              <img src="/logo.jpg" alt="Dr. Theo's Empowerment Hub" className="h-12 w-auto object-contain rounded" />
+              <img src="/logo.jpg" alt="Dr. Theo's Empowerment Foundation" className="h-12 w-auto object-contain rounded" />
             </Link>
             <p className="text-white/70 text-sm leading-relaxed mb-6 text-balance">
               Building stronger connections, creating opportunities, and achieving meaningful progress together.
@@ -35,7 +35,7 @@ export const Footer = () => {
               <li>info@drtheoshub.org</li>
               <li>+234 810 382 6273</li>
               <li>+1 415 325 8335</li>
-              <li>Dr. Theo's Empowerment Hub<br />53 Erepa Road, Yenagoa<br/>Bayelsa State 560001 -560233, Nigeria</li>
+              <li>Dr. Theo's Empowerment Foundation<br />53 Erepa Road, Yenagoa<br/>Bayelsa State 560001 -560233, Nigeria</li>
             </ul>
           </div>
 
@@ -55,7 +55,7 @@ export const Footer = () => {
         </div>
 
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-white/50 space-y-6 md:space-y-0">
-          <p>&copy; {new Date().getFullYear()} Dr. Theo's Empowerment Hub. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Dr. Theo's Empowerment Foundation. All rights reserved.</p>
           
           <div className="flex gap-4">
             <a href="https://web.facebook.com/john.theophilus.okosigha" className="hover:text-gold transition-colors">

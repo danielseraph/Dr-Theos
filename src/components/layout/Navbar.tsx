@@ -122,13 +122,14 @@ const MobileDropdown = ({ item, setIsMobileMenuOpen }: { item: any, setIsMobileM
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="border-b border-gray-100 last:border-0">
+    <div className="w-full">
       <button 
+        type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center justify-between w-full py-3 text-dark font-semibold"
+        className="flex items-center justify-between w-full py-3.5 text-white font-bold text-base hover:text-gold transition-colors"
       >
         <span>{item.name}</span>
-        <ChevronDown className={cn("w-5 h-5 transition-transform", isOpen && "rotate-180")} />
+        <ChevronDown className={cn("w-5 h-5 text-gold transition-transform duration-300", isOpen && "rotate-180")} />
       </button>
       <AnimatePresence>
         {isOpen && (
@@ -136,14 +137,15 @@ const MobileDropdown = ({ item, setIsMobileMenuOpen }: { item: any, setIsMobileM
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.25, ease: "easeInOut" }}
             className="overflow-hidden"
           >
-            <div className="pl-4 pb-3 flex flex-col space-y-3">
+            <div className="pl-4 pb-3 flex flex-col space-y-2.5 border-l-2 border-gold/30 my-1 ml-2">
               {item.dropdown.map((dropItem: any) => (
                 <Link
                   key={dropItem.name}
                   to={dropItem.path}
-                  className="text-sm text-dark/70 hover:text-gold block font-medium"
+                  className="text-sm text-white/80 hover:text-gold block font-medium py-1 transition-colors"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {dropItem.name}
@@ -170,6 +172,23 @@ export const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMobileMenuOpen]);
+
+  // Close mobile menu on route change
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+  }, [location.pathname]);
+
   const isHome = location.pathname === '/';
 
   return (
@@ -187,7 +206,7 @@ export const Navbar = () => {
           to="/" 
           className="flex items-center transition-opacity hover:opacity-80 shrink-0"
         >
-          <img src="/logo.jpg" alt="Dr. Theo's Empowerment Hub" className="h-10 w-auto object-contain rounded" />
+          <img src="/logo.jpg" alt="Dr. Theo's Empowerment Foundation" className="h-10 w-auto object-contain rounded" />
         </Link>
 
         {/* Desktop Nav */}
@@ -210,58 +229,113 @@ export const Navbar = () => {
           ))}
         </div>
 
-
-
-        {/* Mobile Menu Toggle */}
+        {/* Mobile Menu Toggle Button */}
         <button 
-          className="lg:hidden p-2"
+          type="button"
+          aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+          className={cn(
+            "lg:hidden p-2.5 rounded-xl transition-all duration-200 active:scale-95 z-50",
+            isScrolled 
+              ? "text-navy hover:bg-gray-100" 
+              : "text-white hover:bg-white/10"
+          )}
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
-          {isMobileMenuOpen ? (
-            <X className={cn("w-6 h-6", isScrolled ? "text-dark" : "text-white")} />
-          ) : (
-            <Menu className={cn("w-6 h-6", isScrolled ? "text-dark" : "text-white")} />
-          )}
+          <Menu className={cn("w-6 h-6", isScrolled ? "text-dark" : "text-white")} />
         </button>
       </div>
 
-      {/* Mobile Nav */}
+      {/* Fullscreen Mobile Drawer with Smooth Animations */}
       <AnimatePresence>
         {isMobileMenuOpen && (
-          <motion.div 
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="lg:hidden absolute top-full left-0 right-0 bg-white shadow-lg border-t border-gray-100 max-h-[85vh] overflow-y-auto"
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            className="fixed inset-0 z-50 lg:hidden bg-navy/95 backdrop-blur-md flex flex-col"
           >
-            <div className="py-2 px-6 flex flex-col">
-              {navLinks.map((link) => (
-                link.dropdown ? (
-                  <MobileDropdown key={link.name} item={link} setIsMobileMenuOpen={setIsMobileMenuOpen} />
-                ) : (
-                  <Link
-                    key={link.name}
-                    to={link.path}
-                    className="text-dark font-semibold py-3 border-b border-gray-100 last:border-0 block"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    {link.name}
-                  </Link>
-                )
+            {/* Top header bar of full screen drawer */}
+            <div className="flex items-center justify-between px-5 py-4 border-b border-white/10">
+              <Link
+                to="/"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="flex items-center gap-3 transition-opacity hover:opacity-80"
+              >
+                <img
+                  src="/logo.jpg"
+                  alt="Dr. Theo's Empowerment Foundation"
+                  className="h-10 w-auto object-contain rounded"
+                />
+                <span className="text-white font-bold text-sm tracking-wide">
+                  Dr. Theo's Foundation
+                </span>
+              </Link>
+              <button
+                type="button"
+                aria-label="Close menu"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="p-2 rounded-xl bg-white/10 text-white hover:bg-white/20 active:scale-95 transition-all"
+              >
+                <X className="w-6 h-6" />
+              </button>
+            </div>
+
+            {/* Scrollable Nav Items list with staggered animation */}
+            <motion.div
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: 20, opacity: 0 }}
+              transition={{ duration: 0.3, ease: 'easeOut' }}
+              className="flex-1 overflow-y-auto px-6 py-6 space-y-1"
+            >
+              {navLinks.map((link, index) => (
+                <motion.div
+                  key={link.name}
+                  initial={{ opacity: 0, x: -15 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.04 * index, duration: 0.25 }}
+                >
+                  {link.dropdown ? (
+                    <div className="border-b border-white/10 py-1">
+                      <MobileDropdown item={link} setIsMobileMenuOpen={setIsMobileMenuOpen} />
+                    </div>
+                  ) : (
+                    <Link
+                      to={link.path}
+                      className="text-white hover:text-gold font-bold text-base py-3.5 border-b border-white/10 flex items-center justify-between transition-colors"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      <span>{link.name}</span>
+                    </Link>
+                  )}
+                </motion.div>
               ))}
-              
-              <div className="flex flex-col gap-3 py-6">
+
+              {/* Action Buttons */}
+              <motion.div
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.25, duration: 0.3 }}
+                className="flex flex-col gap-3 pt-6 pb-8"
+              >
                 <Link to="/donate" onClick={() => setIsMobileMenuOpen(false)}>
-                  <Button variant="primary" className="w-full">DONATE</Button>
+                  <Button variant="primary" className="w-full justify-center shadow-lg shadow-gold/20 py-3 font-bold">
+                    DONATE
+                  </Button>
                 </Link>
                 <Link to="/apply" onClick={() => setIsMobileMenuOpen(false)}>
-                  <Button variant="outline" className="w-full">APPLY FOR SUPPORT</Button>
+                  <Button variant="outline" className="w-full justify-center border-gold text-gold hover:bg-gold hover:text-navy py-3 font-bold">
+                    APPLY FOR SUPPORT
+                  </Button>
                 </Link>
                 <Link to="/volunteer" onClick={() => setIsMobileMenuOpen(false)}>
-                  <Button variant="secondary" className="w-full">VOLUNTEER</Button>
+                  <Button variant="secondary" className="w-full justify-center py-3 font-bold">
+                    VOLUNTEER
+                  </Button>
                 </Link>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>

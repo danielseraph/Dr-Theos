@@ -22,7 +22,7 @@ export const Founder = () => {
             Prince Engr. Dr. John Theophilus Okosigha
           </motion.h1>
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="text-xl text-white/80 max-w-2xl mx-auto leading-relaxed">
-            Founder & Executive Director, Dr. Theo's Empowerment Hub
+            Founder & Executive Director, Dr. Theo's Empowerment Foundation
           </motion.p>
         </div>
       </section>
@@ -53,13 +53,13 @@ export const Founder = () => {
                   Born and raised in Opume Community, Ogbia L.G.A., Bayelsa State, Nigeria, Dr. Theo is deeply committed to empowering individuals and strengthening communities. His passion for helping others is also deeply personal, inspired by the love, sacrifices, values, and unwavering support of his late mother, <strong>Queen Isekpar Theophilus Okosigha</strong>, as well as his beloved wife, <strong>Queen Merjerie Sorongon-Okosigha</strong>, whose love, encouragement, and support continue to inspire him.
                 </p>
                 <p>
-                  His wife, Queen Merjerie, serves as the Co-Founder and Deputy Executive Director of Dr. Theo's Empowerment Hub, working alongside him in advancing the organization's vision of creating opportunities and making a meaningful difference in the lives of others. Dr. Theo deeply values her as both his life partner and his partner in service, and together they are committed to building a culture of love, support, empowerment, accountability, and shared growth.
+                  His wife, Queen Merjerie, serves as the Co-Founder and Deputy Executive Director of Dr. Theo's Empowerment Foundation, working alongside him in advancing the organization's vision of creating opportunities and making a meaningful difference in the lives of others. Dr. Theo deeply values her as both his life partner and his partner in service, and together they are committed to building a culture of love, support, empowerment, accountability, and shared growth.
                 </p>
                 <p>
-                  This shared vision led to the establishment of <strong>Dr. Theo's Empowerment Hub</strong>, an initiative focused on education, skills development, mentorship, entrepreneurship, and economic empowerment for underprivileged individuals, children, women, youth, and entrepreneurs.
+                  This shared vision led to the establishment of <strong>Dr. Theo's Empowerment Foundation</strong>, an initiative focused on education, skills development, mentorship, entrepreneurship, and economic empowerment for underprivileged individuals, children, women, youth, and entrepreneurs.
                 </p>
                 <p>
-                  For Dr. Theo, empowerment is more than providing assistance—it is about building people, creating opportunities, developing capacity, and helping individuals become capable of helping themselves and others. Through the Empowerment Hub, he and his wife seek to extend the love, support, and values that have shaped their own lives to individuals and communities in need.
+                  For Dr. Theo, empowerment is more than providing assistance—it is about building people, creating opportunities, developing capacity, and helping individuals become capable of helping themselves and others. Through the Empowerment Foundation, he and his wife seek to extend the love, support, and values that have shaped their own lives to individuals and communities in need.
                 </p>
 
                 <div className="clear-both pt-8"></div><div className="mt-12 p-8 bg-white rounded-2xl shadow-sm border border-gray-100 flex flex-col md:flex-row gap-8 items-center">
@@ -69,7 +69,7 @@ export const Founder = () => {
                   <div>
                     <h3 className="text-2xl font-bold text-navy mb-3">A Legacy of Love & Inspiration</h3>
                     <p className="text-dark/80 leading-relaxed text-base">
-                      The profound dedication to service and community empowerment that drives the Hub is deeply inspired by the life, values, and enduring legacy of Dr. Theo's beloved mother, Late Queen Isekpar Theophilus Okosigha. Her spirit of generosity, resilience, and unwavering belief in lifting others up remain the guiding light behind every initiative the Empowerment Hub undertakes.
+                      The profound dedication to service and community empowerment that drives the Foundation is deeply inspired by the life, values, and enduring legacy of Dr. Theo's beloved mother, Late Queen Isekpar Theophilus Okosigha. Her spirit of generosity, resilience, and unwavering belief in lifting others up remain the guiding light behind every initiative the Empowerment Foundation undertakes.
                     </p>
                   </div>
                 </div>

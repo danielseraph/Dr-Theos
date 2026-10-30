@@ -45,7 +45,7 @@ export const ContactForm = () => {
     return (
       <div className="bg-gold/10 border border-gold/20 p-8 rounded-2xl text-center">
         <h3 className="text-2xl font-bold text-navy mb-4">Message Sent!</h3>
-        <p className="text-dark/70 mb-6">Thank you for reaching out to Dr. Theo's Empowerment Hub. Our team will get back to you shortly.</p>
+        <p className="text-dark/70 mb-6">Thank you for reaching out to Dr. Theo's Empowerment Foundation. Our team will get back to you shortly.</p>
         <Button variant="outline" onClick={() => setStatus('idle')} className="!text-navy !border-navy hover:!bg-navy hover:!text-white">
           Send Another Message
         </Button>

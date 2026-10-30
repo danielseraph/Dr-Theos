@@ -24,7 +24,7 @@ const roles = [
   {
     icon: <ClipboardList className="w-7 h-7" />,
     title: 'Administrative Volunteers',
-    desc: 'Support the Hub\'s day-to-day operations through data entry, record keeping, scheduling, and correspondence.',
+    desc: "Support the Foundation's day-to-day operations through data entry, record keeping, scheduling, and correspondence.",
     commitment: '5–10 hrs/week',
     mode: 'In-person or Remote',
   },
@@ -118,7 +118,7 @@ export const Volunteer = () => {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-navy mb-4">Why Volunteer With Us?</h2>
-            <p className="text-dark/60 text-lg max-w-2xl mx-auto">Volunteering at Dr. Theo's Empowerment Hub is more than just giving back — it's a personal and professional journey.</p>
+            <p className="text-dark/60 text-lg max-w-2xl mx-auto">Volunteering at Dr. Theo's Empowerment Foundation is more than just giving back — it's a personal and professional journey.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {whyVolunteer.map((item, i) => (

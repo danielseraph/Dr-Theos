@@ -82,11 +82,11 @@ export const HeroSection = () => {
           <div className="flex flex-col items-center justify-center mb-4">
             <img
               src="/logo.jpg"
-              alt="Dr. Theo's Empowerment Hub"
+              alt="Dr. Theo's Empowerment Foundation"
               className="h-24 w-auto object-contain rounded-xl shadow-lg mb-6 border-2 border-white/10"
             />
             <h2 className="text-xl md:text-2xl text-gold font-semibold uppercase tracking-widest mb-4">
-              Dr. Theo's Empowerment Hub
+              Dr. Theo's Empowerment Foundation
             </h2>
           </div>
 

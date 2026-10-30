@@ -378,7 +378,7 @@ export const programs: Program[] = [
     subtitle: 'Investing in human capital -- one student at a time',
     heroTagline: 'Education is the most powerful weapon for change.',
     description:
-      "The Dr. Theo's Empowerment Hub Scholarship Programme is one of our flagship initiatives. We award merit-based and need-based scholarships to outstanding students who are unable to fund their own education. Our scholarships cover tuition, accommodation, and essential academic costs.",
+      "The Dr. Theo's Empowerment Foundation Scholarship Programme is one of our flagship initiatives. We award merit-based and need-based scholarships to outstanding students who are unable to fund their own education. Our scholarships cover tuition, accommodation, and essential academic costs.",
     icon: <GraduationCap className="w-8 h-8" />,
     color: 'gold',
     stats: [
@@ -416,9 +416,9 @@ export const programs: Program[] = [
       { step: '5. Award Notification', desc: 'Successful scholars are notified and scholarship funds disbursed directly to the institution.' },
     ],
     selectionProcess: [
-      'Applications are assessed by a Scholarship Selection Committee comprising academics, community leaders, and Hub staff',
+      'Applications are assessed by a Scholarship Selection Committee comprising academics, community leaders, and Foundation staff',
       'Scoring rubric: 40% financial need, 40% academic performance, 20% personal essay and community contribution',
-      'Interviews evaluate character, ambition, and alignment with Hub values',
+      'Interviews evaluate character, ambition, and alignment with Foundation values',
       'All decisions are final and communicated in writing',
       'Scholars sign a scholarship agreement committing to maintain academic standards and serve as ambassadors',
     ],
@@ -497,7 +497,7 @@ export const programs: Program[] = [
       'Young entrepreneurs needing business guidance',
       'Women seeking professional role models',
       'Youth transitioning from vocational training to employment',
-      'Any Hub beneficiary wishing to be matched with a mentor',
+      'Any Foundation beneficiary wishing to be matched with a mentor',
     ],
     what: [
       { label: 'One-on-One Mentoring', desc: 'Regular, structured sessions between mentor and mentee with clear goals and accountability.', icon: <Users className="w-6 h-6 text-navy" /> },
@@ -507,7 +507,7 @@ export const programs: Program[] = [
       { label: 'Alumni Network Access', desc: 'All programme graduates join our alumni network for ongoing peer and professional support.', icon: <HandHeart className="w-6 h-6 text-navy" /> },
     ],
     eligibility: [
-      'Must be enrolled in or a graduate of any Hub programme to be a mentee',
+      'Must be enrolled in or a graduate of any Foundation programme to be a mentee',
       'Must be willing to meet with a mentor at least twice per month',
       'Must set clear goals at the start of the mentoring relationship',
       'Mentors must have at least 5 years of professional experience in their field',
@@ -516,18 +516,18 @@ export const programs: Program[] = [
     applicationSteps: [
       { step: '1. Express Interest', desc: 'Complete the Mentorship Interest Form indicating your goals, field of interest, and preferred mentor profile.' },
       { step: '2. Matching Process', desc: 'Our team reviews all forms and matches mentees with the most compatible available mentor.' },
-      { step: '3. Introduction Session', desc: 'Mentor and mentee meet for an introductory session facilitated by Hub staff.' },
+      { step: '3. Introduction Session', desc: 'Mentor and mentee meet for an introductory session facilitated by Foundation staff.' },
       { step: '4. Goal Setting', desc: 'Both parties agree on specific goals, meeting frequency, and communication methods.' },
-      { step: '5. Active Mentoring & Review', desc: 'Regular sessions over 6 months, with a mid-point and final review by Hub staff.' },
+      { step: '5. Active Mentoring & Review', desc: 'Regular sessions over 6 months, with a mid-point and final review by Foundation staff.' },
     ],
     selectionProcess: [
       'Matching is based on field of interest, career goals, and personality profile',
-      'Hub staff interview both prospective mentors and mentees before finalising matches',
+      'Foundation staff interview both prospective mentors and mentees before finalising matches',
       'Priority given to mentees in our active programmes who express a specific mentorship need',
       'Mentors are vetted for professional background, character, and commitment',
       'Unmatched mentees are placed on a waiting list and notified for the next cohort',
     ],
-    locations: ['Hub offices (in-person sessions)', 'Virtual/online (Google Meet, Zoom)', "Mentor's workplace (for industry visits)"],
+    locations: ['Foundation offices (in-person sessions)', 'Virtual/online (Google Meet, Zoom)', "Mentor's workplace (for industry visits)"],
   },
 ];
 
